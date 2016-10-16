@@ -16,13 +16,13 @@ struct Song
 const int COUNT_SONGS = 20;
 
 Song songs [COUNT_SONGS];
-
+Song tempSong;                 //Временная структура для свапа
 int main () 
 {	
     
     
-	const char* songs_in_Top[COUNT_SONGS];
-    const char* groups_in_Top[COUNT_SONGS];   
+    char* songs_in_Top[COUNT_SONGS];
+    char* groups_in_Top[COUNT_SONGS];   
     int popularity_songs_in_Top[COUNT_SONGS];
 
     int real_cout_Songs = 0;
@@ -146,30 +146,23 @@ int main ()
 
             case 3: 
 		      {
-                const char* TMP = songs[number_of_the_current_Song].name;
-                const char* TMP2 = songs[number_of_the_current_Song].group;
-                int current_Popularity = songs[number_of_the_current_Song].popularity;
+                const char* temp_name_song = songs[number_of_the_current_Song].name;
+                const char* temp_name_group = songs[number_of_the_current_Song].group;               
 
 			    for(int i = 1; i < real_cout_Songs; ++i)
 			      {
-                    char* tmp =songs[i].name;
-                    char* temp= songs[i].group;
-                    int variable = songs[i].popularity;
+                    tempSong = songs[i];                   
 			        int j = i-1;
 
-                    while (j> -1 && strcmp(temp, songs[j].group) != 0) 
+                    while (j> -1 && strcmp(tempSong.name, songs[j].group) != 0) 
 			          {
-                        songs[j + 1].name = songs[j].name;
-                        songs[j +1].group = songs[j].group;
-                        songs[j+1].popularity = songs[j].popularity;
+                        songs[j + 1] = songs[j];
                         --j;
                       }
-                    songs[j+1].name = tmp;
-                    songs[j+1].group = temp;
-                    songs[j + 1].popularity = variable;
+                    songs[j+1] = tempSong;                    
                   }
 
-                cout<< "New playlist order "<<endl;
+                cout<<"New playlist order "<<endl;
 
                 for (int i = 0; i < real_cout_Songs; ++i) 
 		 	      {
@@ -178,7 +171,7 @@ int main ()
 
                 for (int i = 0; i < real_cout_Songs; ++i) 
 			      {
-                    if (strcmp(TMP2, songs[i].group)==0 && strcmp(TMP, songs[i].name)== 0) 
+                    if (strcmp(temp_name_group, songs[i].group)==0 && strcmp(temp_name_song, songs[i].name)== 0) 
 			          {
                         number_of_the_current_Song = i;
                         break;
@@ -203,28 +196,22 @@ int main ()
 
             case 4: 
 	          {
-                const char* nazvanieTekusheyPesny = songs[number_of_the_current_Song].name;
-                const char* nazvanieTekusheyGruppy = songs[number_of_the_current_Song].group;
+                const char* temp_name_song = songs[number_of_the_current_Song].name;
+                const char* temp_name_group = songs[number_of_the_current_Song].group;
                 int popularnost_tekushey_Gruppy = songs[number_of_the_current_Song].popularity;
 
                 for (int i = 1; i<real_cout_Songs; ++i) 
 				  {
-                    char* vremenoeNazvanyePesny = songs[i].name;
-                    char* vremenoeNazvanyeGruppy = songs[i].group;
-                    int popularnostVremennoyPesny = songs[i].popularity;
+                    tempSong = songs[i];                    
                     int j = i-1;
 
-                    while (j >-1 && strcmp(vremenoeNazvanyePesny,songs[j].name)!=0)
+                    while (j >-1 && strcmp(tempSong.name,songs[j].name)!=0)
 					  {
-                        songs[j + 1].name = songs[j].name;
-                        songs[j + 1].group = songs[j].group;
-                        songs[j + 1].popularity = songs[j].popularity;
+                        songs[j + 1] = songs[j];                       
                         --j;
 					  }
 
-                    songs[j + 1].name = vremenoeNazvanyePesny;
-                    songs[j + 1].group = vremenoeNazvanyeGruppy;
-                    songs[j + 1].popularity = popularnostVremennoyPesny;
+                    songs[j + 1] = tempSong;                    
                   }
 
                 cout<< "New playlist order "<<endl;
@@ -236,7 +223,7 @@ int main ()
 
                 for (int i = 0; i < real_cout_Songs; ++i)
 				  {
-                    if (strcmp(nazvanieTekusheyGruppy, songs[i].group) == 0 && strcmp(nazvanieTekusheyPesny, songs[i].name) == 0) 
+                    if (strcmp(temp_name_group, songs[i].group) == 0 && strcmp(temp_name_song, songs[i].name) == 0) 
 					  {
                         number_of_the_current_Song = i;
                         break;
@@ -382,8 +369,8 @@ int main ()
 
                 for (int i = 1;i< real_cout_Songs;++i) 
 				  {
-				    const char* vremenoeNazvanyePesny = songs_in_Top[i];
-                    const char* vremenoeNazvanyeGruppy = groups_in_Top[i];
+				    char* vremenoeNazvanyePesny = songs_in_Top[i];
+                    char* vremenoeNazvanyeGruppy = groups_in_Top[i];
 					int popularnostVremennoyPesny = popularity_songs_in_Top[i];
                     int j = i - 1;
 
@@ -468,8 +455,8 @@ int main ()
 
                 for (int i = 1; i < real_cout_Songs; ++i) 
 			      { 
-				    const char* temp1 = songs_in_Top[i]; 
-					const char* temp2 = groups_in_Top[i];
+				    char* temp1 = songs_in_Top[i]; 
+					char* temp2 = groups_in_Top[i];
 					int temp3 = popularity_songs_in_Top[i];
 					int j = i - 1;
 
