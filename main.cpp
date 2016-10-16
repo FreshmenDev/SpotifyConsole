@@ -1,10 +1,13 @@
 ﻿#include <iostream>
 #include <string>
 
+using namespace std;
 
-int main () {
+
+int main () 
+{
     const int COUNT_SONGS = 20;
-
+	
     const char* Songs[COUNT_SONGS];
     const char* Groups[COUNT_SONGS];
     int popularity_Songs[COUNT_SONGS];
@@ -93,35 +96,22 @@ int main () {
 
 
         std::cout << "Enter action you want to make: " << std::endl;
-
         std::cout << "1) Play next" << std::endl;
-
         std::cout << "2) Play prev" << std::endl;
-
         std::cout << "3) Group by band" << std::endl;
-
-                            std::cout << "4) Group by song name" << std::endl;
-
-           std::cout << "5) Search song by band " << std::endl;
-
-                            std::cout << "6) Search song by name " << std::endl;
-            std::cout << "7) Show playlist " << std::endl;
-
-                            std::cout << "8) Play specific song (specified by position) " << std::endl;
-
-        std::cout << "9) What is playing now? " << std::endl;
-
-        std::cout << "10) Show my chart " << std::endl;
-
-        std::cout << "11) Sort by popularity " << std::endl;
-
-                std::cout << "12) Show the most popular band " << std::endl;
-
+        std::cout << "4) Group by song name" << std::endl;
+		std::cout << "5) Search song by band " << std::endl;
+		std::cout << "6) Search song by name " << std::endl;
+        std::cout << "7) Show playlist " << std::endl;
+	    std::cout << "8) Play specific song (specified by position) " << std::endl;
+		std::cout << "9) What is playing now? " << std::endl;
+		std::cout << "10) Show my chart " << std::endl;
+		std::cout << "11) Sort by popularity " << std::endl;
+	    std::cout << "12) Show the most popular band " << std::endl;
         std::cout << "13) Exit " << std::endl;
 
         std::cin >> vybor;
-
-        std::cin.ignore();
+		std::cin.ignore();
 
         switch (vybor) {
             case 1: {
