@@ -356,13 +356,14 @@ int main () {
                 }
 
                 for (int i = 1;i< realnoe_kolichestvo_pesen;++i) {
-const char* vremenoeNazvanyePesny = pesny_VTope[i];
-                    const char* vremenoeNazvanyeGruppy = gruppy_v_tope[i];int popularnostVremennoyPesny = popularnost_pesen_v_tope[i];
+					const char* vremenoeNazvanyePesny = pesny_VTope[i];
+                    const char* vremenoeNazvanyeGruppy = gruppy_v_tope[i];
+					int popularnostVremennoyPesny = popularnost_pesen_v_tope[i];
 
                     int j = i - 1;
                     while (j > -1 && popularnost_pesen_v_tope[j] < popularnostVremennoyPesny) {
                         pesny_VTope[j + 1] = pesny_VTope[j];
-                  gruppy_v_tope[j + 1] = gruppy_v_tope[j];
+					    gruppy_v_tope[j + 1] = gruppy_v_tope[j];
                         popularnost_pesen_v_tope[j + 1] = popularnost_pesen_v_tope[j];
                         --j;
                     }
@@ -381,11 +382,13 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
                 break;
             }
 
-            case 11: {const char* currentSongName = massiv_pesen[nomerTeckusheyPensy];
+            case 11: {
+				const char* currentSongName = massiv_pesen[nomerTeckusheyPensy];
                 const char* currentBandName = massivGrupp[nomerTeckusheyPensy];
                 int currentSongPopularity = popularnost_pesen[nomerTeckusheyPensy];
 
-                for (int i = 1; i < realnoe_kolichestvo_pesen; ++i) { const char* vremenoeNazvanyePesny = massiv_pesen[i];
+                for (int i = 1; i < realnoe_kolichestvo_pesen; ++i) { 
+					const char* vremenoeNazvanyePesny = massiv_pesen[i];
                     const char* vremenoeNazvanyeGruppy = massivGrupp[i];
                     int popularnostVremennoyPesny = popularnost_pesen[i];
 
