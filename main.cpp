@@ -10,9 +10,9 @@ int main () {
     int popularity_Songs[COUNT_SONGS];
 
 
-    const char* pesny_VTope[COUNT_SONGS];
-    const char* gruppy_v_tope[COUNT_SONGS];
-    int popularnost_pesen_v_tope[COUNT_SONGS];
+    const char* songs_in_Top[COUNT_SONGS];
+    const char* groups_in_Top[COUNT_SONGS];
+    int popularity_songs_in_Top[COUNT_SONGS];
 
     int real_cout_Songs = 0;
     int nomerTeckusheyPensy = 0;
@@ -350,32 +350,32 @@ int main () {
 
             case 10: {
                 for (int i =0; i < real_cout_Songs;++i) {
-                    pesny_VTope[i]= Songs[i];
-                    gruppy_v_tope[i] =Groups[i];
-                    popularnost_pesen_v_tope[i]=popularity_Songs[i];
+                    songs_in_Top[i]= Songs[i];
+                    groups_in_Top[i] =Groups[i];
+                    popularity_songs_in_Top[i]=popularity_Songs[i];
                 }
 
                 for (int i = 1;i< real_cout_Songs;++i) {
-const char* vremenoeNazvanyePesny = pesny_VTope[i];
-                    const char* vremenoeNazvanyeGruppy = gruppy_v_tope[i];int popularnostVremennoyPesny = popularnost_pesen_v_tope[i];
+const char* vremenoeNazvanyePesny = songs_in_Top[i];
+                    const char* vremenoeNazvanyeGruppy = groups_in_Top[i];int popularnostVremennoyPesny = popularity_songs_in_Top[i];
 
                     int j = i - 1;
-                    while (j > -1 && popularnost_pesen_v_tope[j] < popularnostVremennoyPesny) {
-                        pesny_VTope[j + 1] = pesny_VTope[j];
-                  gruppy_v_tope[j + 1] = gruppy_v_tope[j];
-                        popularnost_pesen_v_tope[j + 1] = popularnost_pesen_v_tope[j];
+                    while (j > -1 && popularity_songs_in_Top[j] < popularnostVremennoyPesny) {
+                        songs_in_Top[j + 1] = songs_in_Top[j];
+                  groups_in_Top[j + 1] = groups_in_Top[j];
+                        popularity_songs_in_Top[j + 1] = popularity_songs_in_Top[j];
                         --j;
                     }
 
-                    pesny_VTope[j + 1] = vremenoeNazvanyePesny;
-                    gruppy_v_tope[j + 1] = vremenoeNazvanyeGruppy;
-                    popularnost_pesen_v_tope[j + 1] = popularnostVremennoyPesny;
+                    songs_in_Top[j + 1] = vremenoeNazvanyePesny;
+                    groups_in_Top[j + 1] = vremenoeNazvanyeGruppy;
+                    popularity_songs_in_Top[j + 1] = popularnostVremennoyPesny;
                 }
 
                 std::cout << "Chart: " << std::endl;
 
                 for(int i=0;i <real_cout_Songs;++i){
-                    std::cout<< (i + 1) << ") "<< gruppy_v_tope[i]<< " - "<< pesny_VTope[i] << std::endl;
+                    std::cout<< (i + 1) << ") "<< groups_in_Top[i]<< " - "<< songs_in_Top[i] << std::endl;
                 }
 
                 break;
@@ -427,31 +427,31 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
             case 12: {
                 for (int i = 0; i < real_cout_Songs; ++i)
                 {
-                    pesny_VTope[i] = Songs[i];
-                        gruppy_v_tope[i] = Groups[i];
-                    popularnost_pesen_v_tope[i] = popularity_Songs[i]; }
+                    songs_in_Top[i] = Songs[i];
+                        groups_in_Top[i] = Groups[i];
+                    popularity_songs_in_Top[i] = popularity_Songs[i]; }
 
-                for (int i = 1; i < real_cout_Songs; ++i) { const char* temp1 = pesny_VTope[i]; const char* temp2 = gruppy_v_tope[i];
-                    int temp3 = popularnost_pesen_v_tope[i];
+                for (int i = 1; i < real_cout_Songs; ++i) { const char* temp1 = songs_in_Top[i]; const char* temp2 = groups_in_Top[i];
+                    int temp3 = popularity_songs_in_Top[i];
 
                     int j = i - 1;
-                    while (j > -1 && popularnost_pesen_v_tope[j] < temp3)
+                    while (j > -1 && popularity_songs_in_Top[j] < temp3)
                     {
-                        pesny_VTope[j + 1] = pesny_VTope[j];
-                        gruppy_v_tope[j + 1] = gruppy_v_tope[j];
-                        popularnost_pesen_v_tope[j + 1] = popularnost_pesen_v_tope[j];
+                        songs_in_Top[j + 1] = songs_in_Top[j];
+                        groups_in_Top[j + 1] = groups_in_Top[j];
+                        popularity_songs_in_Top[j + 1] = popularity_songs_in_Top[j];
 
 
 
                         --j;
                     }
 
-                    pesny_VTope[j + 1] = temp1;
-                        gruppy_v_tope[j + 1] = temp2;
-                    popularnost_pesen_v_tope[j + 1] = temp3;
+                    songs_in_Top[j + 1] = temp1;
+                        groups_in_Top[j + 1] = temp2;
+                    popularity_songs_in_Top[j + 1] = temp3;
                 }
 
-                    std::cout << "Most popular band is: " << gruppy_v_tope[0] << std::endl;
+                    std::cout << "Most popular band is: " << groups_in_Top[0] << std::endl;
                 break;
             }
 
