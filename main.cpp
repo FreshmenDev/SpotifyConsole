@@ -5,77 +5,86 @@
 using namespace std;
 
 
-int main () 
+
+struct Song  
 {
-    const int COUNT_SONGS = 20;
-	
-    const char* Songs[COUNT_SONGS];
-    const char* Groups[COUNT_SONGS];
+  char* name;
+  char* group;
+  int popularity;
+};
+
+const int COUNT_SONGS = 20;
+
+Song songs [COUNT_SONGS];
+
+int main () 
+{	
+    
+    
 	const char* songs_in_Top[COUNT_SONGS];
     const char* groups_in_Top[COUNT_SONGS];   
-
-    int popularity_Songs[COUNT_SONGS];
     int popularity_songs_in_Top[COUNT_SONGS];
+
     int real_cout_Songs = 0;
     int number_of_the_current_Song = 0;
 
 	bool isDone = true;
 
-    Songs[0] = "Should I Stay or Should I Go";
-    Groups[0] = "The Clash";
-    popularity_Songs[0] = 0;
+    songs[0].name = "Should I Stay or Should I Go";
+    songs[0].group = "The Clash";
+    songs[0].popularity = 0;
 
-    Songs[1] = "Baby don't lie to me";
-    Groups[1] = "The Fratellis";
-    popularity_Songs[1] = 0;
+    songs[1].name = "Baby don't lie to me";
+    songs[1].group = "The Fratellis";
+    songs[1].popularity = 0;
 
-    Songs[2] = "Ole Black 'n' Blue Eyes";
-    Groups[2] = "The Fratellis";
-    popularity_Songs[2] = 0;
+    songs[2].name = "Ole Black 'n' Blue Eyes";
+    songs[2].group = "The Fratellis";
+    songs[2].popularity = 0;
 
-    Songs[3] = "Like A Champion";
-    Groups[3] = "The Baseballs";
-    popularity_Songs[3] = 0;
+    songs[3].name = "Like A Champion";
+    songs[3].group = "The Baseballs";
+    songs[3].popularity = 0;
 
-    Songs[4] = "Jackie and Wilson";
-    Groups[4] = "Hoizer";
-    popularity_Songs[4] = 0;
+    songs[4].name = "Jackie and Wilson";
+    songs[4].group = "Hoizer";
+    songs[4].popularity = 0;
 
-    Songs[5] = "Mountains";
-    Groups[5] = "Message To Bears";
-    popularity_Songs[5] = 0;
+    songs[5].name = "Mountains";
+    songs[5].group = "Message To Bears";
+    songs[5].popularity = 0;
 
-    Songs[6] = "When It's Cold I'd Like to Die";
-    Groups[6] = "Moby";
-    popularity_Songs[6] = 0;
+    songs[6].name = "When It's Cold I'd Like to Die";
+    songs[6].group = "Moby";
+    songs[6].popularity = 0;
 
-    Songs[7] = "Damn Your Eyes";
-    Groups[7] = "Alex Clare";
-    popularity_Songs[7] = 0;
+    songs[7].name = "Damn Your Eyes";
+    songs[7].group = "Alex Clare";
+    songs[7].popularity = 0;
 
-    Songs[8] = "Heroes";
-    Groups[8] = "David Bowie";
-    popularity_Songs[8] = 0;
+    songs[8].name = "Heroes";
+    songs[8].group = "David Bowie";
+    songs[8].popularity = 0;
 
-    Songs[9] = "No Diggity";
-    Groups[9] = "Chet Faker";
-    popularity_Songs[9] = 0;
+    songs[9].name = "No Diggity";
+    songs[9].group = "Chet Faker";
+    songs[9].popularity = 0;
 
-    Songs[10] = "Inhaler";
-    Groups[10] = "Foals";
-    popularity_Songs[10] = 0;
+    songs[10].name = "Inhaler";
+    songs[10].group = "Foals";
+    songs[10].popularity = 0;
 
-    Songs[11] = "London Thunder";
-    Groups[11] = "Foals";
-    popularity_Songs[11] = 0;
+    songs[11].name = "London Thunder";
+    songs[11].group = "Foals";
+    songs[11].popularity = 0;
 
-    Songs[12] = "Spanish Sahara";
-    Groups[12] = "Foals";
-    popularity_Songs[12] = 0;
+    songs[12].name = "Spanish Sahara";
+    songs[12].group = "Foals";
+    songs[12].popularity = 0;
 
-    Songs[13] = "Asleep";
-    Groups[13] = "The Smiths";
-    popularity_Songs[13] = 0;
+    songs[13].name = "Asleep";
+    songs[13].group = "The Smiths";
+    songs[13].popularity = 0;
 
     real_cout_Songs = 14;
 
@@ -83,16 +92,16 @@ int main ()
 	  {
 		int selection = -1;
 
-		cout<<endl<<"Now playing: "<<Groups[number_of_the_current_Song]<<" - "<<Songs[number_of_the_current_Song]<<endl;
+		cout<<endl<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
 		if(number_of_the_current_Song > 0) 
 		  {
-		    cout<<"Previous song: "<<Groups[number_of_the_current_Song - 1]<< " - " <<Songs[number_of_the_current_Song - 1]<<endl;
+		    cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<< " - " <<songs[number_of_the_current_Song - 1].name<<endl;
           }
 
         if(number_of_the_current_Song < real_cout_Songs - 1) 
 		  {
-		    cout<<"Next song: "<<Groups[number_of_the_current_Song + 1]<<" - "<<Songs[number_of_the_current_Song + 1]<<endl;
+		    cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<<" - "<<songs[number_of_the_current_Song + 1].name<<endl;
           }
 
         cout<<"Enter action you want to make: "<<endl;
@@ -120,7 +129,7 @@ int main ()
                 if(number_of_the_current_Song != real_cout_Songs - 1) 
 			      {
                     ++number_of_the_current_Song;
-                    ++popularity_Songs[number_of_the_current_Song]; 
+                    ++songs[number_of_the_current_Song].popularity; 
 			      }
                 break;
               }
@@ -130,46 +139,46 @@ int main ()
                 if(number_of_the_current_Song > 0)
                   {
                     --number_of_the_current_Song;
-                    ++popularity_Songs[number_of_the_current_Song];
+                    ++songs[number_of_the_current_Song].popularity;
                   }
                 break;
               }
 
             case 3: 
 		      {
-                const char* TMP = Songs[number_of_the_current_Song];
-                const char* TMP2 = Groups[number_of_the_current_Song];
-                int current_Popularity = popularity_Songs[number_of_the_current_Song];
+                const char* TMP = songs[number_of_the_current_Song].name;
+                const char* TMP2 = songs[number_of_the_current_Song].group;
+                int current_Popularity = songs[number_of_the_current_Song].popularity;
 
 			    for(int i = 1; i < real_cout_Songs; ++i)
 			      {
-                    const char* tmp =Songs[i];
-                    const char* temp= Groups[i];
-                    int variable = popularity_Songs[i];
+                    char* tmp =songs[i].name;
+                    char* temp= songs[i].group;
+                    int variable = songs[i].popularity;
 			        int j = i-1;
 
-                    while (j> -1 && strcmp(temp, Groups[j]) != 0) 
+                    while (j> -1 && strcmp(temp, songs[j].group) != 0) 
 			          {
-                        Songs[j + 1] = Songs[j];
-                        Groups[j +1] = Groups[j];
-                        popularity_Songs[j+1] = popularity_Songs[j];
+                        songs[j + 1].name = songs[j].name;
+                        songs[j +1].group = songs[j].group;
+                        songs[j+1].popularity = songs[j].popularity;
                         --j;
                       }
-                    Songs[j+1] = tmp;
-                    Groups[j+1] = temp;
-                    popularity_Songs[j + 1] = variable;
+                    songs[j+1].name = tmp;
+                    songs[j+1].group = temp;
+                    songs[j + 1].popularity = variable;
                   }
 
                 cout<< "New playlist order "<<endl;
 
                 for (int i = 0; i < real_cout_Songs; ++i) 
 		 	      {
-                   cout<<Groups[i]<< " - "<<Songs[i]<<endl;
+                   cout<<songs[i].group<< " - "<<songs[i].name<<endl;
                   }
 
                 for (int i = 0; i < real_cout_Songs; ++i) 
 			      {
-                    if (strcmp(TMP2, Groups[i])==0 && strcmp(TMP, Songs[i])== 0) 
+                    if (strcmp(TMP2, songs[i].group)==0 && strcmp(TMP, songs[i].name)== 0) 
 			          {
                         number_of_the_current_Song = i;
                         break;
@@ -177,16 +186,16 @@ int main ()
                   }
 
                 cout<<"Current song position: "<<number_of_the_current_Song + 1<<endl;
-			    cout<<"Now playing: "<<Groups[number_of_the_current_Song]<<" - "<<Songs[number_of_the_current_Song]<<endl;
+			    cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
                 if (number_of_the_current_Song > 0) 
 			      {
-                    cout<<"Previous song: "<<Groups[number_of_the_current_Song - 1]<<" - "<<Songs[number_of_the_current_Song - 1]<<endl;
+                    cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<<" - "<<songs[number_of_the_current_Song - 1].name<<endl;
                   }
             
 			    if (number_of_the_current_Song < real_cout_Songs - 1) 
 				  {
-                    cout<<"Next song: "<<Groups[number_of_the_current_Song + 1]<<" - "<<Songs[number_of_the_current_Song + 1]<<endl;
+                    cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<<" - "<<songs[number_of_the_current_Song + 1].name<<endl;
 				  }
 
                 break;
@@ -194,40 +203,40 @@ int main ()
 
             case 4: 
 	          {
-                const char* nazvanieTekusheyPesny = Songs[number_of_the_current_Song];
-                const char* nazvanieTekusheyGruppy = Groups[number_of_the_current_Song];
-                int popularnost_tekushey_Gruppy = popularity_Songs[number_of_the_current_Song];
+                const char* nazvanieTekusheyPesny = songs[number_of_the_current_Song].name;
+                const char* nazvanieTekusheyGruppy = songs[number_of_the_current_Song].group;
+                int popularnost_tekushey_Gruppy = songs[number_of_the_current_Song].popularity;
 
                 for (int i = 1; i<real_cout_Songs; ++i) 
 				  {
-                    const char* vremenoeNazvanyePesny = Songs[i];
-                    const char* vremenoeNazvanyeGruppy = Groups[i];
-                    int popularnostVremennoyPesny = popularity_Songs[i];
+                    char* vremenoeNazvanyePesny = songs[i].name;
+                    char* vremenoeNazvanyeGruppy = songs[i].group;
+                    int popularnostVremennoyPesny = songs[i].popularity;
                     int j = i-1;
 
-                    while (j >-1 && strcmp(vremenoeNazvanyePesny,Songs[j])!=0)
+                    while (j >-1 && strcmp(vremenoeNazvanyePesny,songs[j].name)!=0)
 					  {
-                        Songs[j + 1] = Songs[j];
-                        Groups[j + 1] = Groups[j];
-                        popularity_Songs[j + 1] = popularity_Songs[j];
+                        songs[j + 1].name = songs[j].name;
+                        songs[j + 1].group = songs[j].group;
+                        songs[j + 1].popularity = songs[j].popularity;
                         --j;
 					  }
 
-                    Songs[j + 1] = vremenoeNazvanyePesny;
-                    Groups[j + 1] = vremenoeNazvanyeGruppy;
-                    popularity_Songs[j + 1] = popularnostVremennoyPesny;
+                    songs[j + 1].name = vremenoeNazvanyePesny;
+                    songs[j + 1].group = vremenoeNazvanyeGruppy;
+                    songs[j + 1].popularity = popularnostVremennoyPesny;
                   }
 
                 cout<< "New playlist order "<<endl;
 
                 for (int i = 0; i<real_cout_Songs; ++i)
                   {
-                    cout<<Groups[i]<<" - "<<Songs[i]<<endl;
+                    cout<<songs[i].group<<" - "<<songs[i].name<<endl;
                   }
 
                 for (int i = 0; i < real_cout_Songs; ++i)
 				  {
-                    if (strcmp(nazvanieTekusheyGruppy, Groups[i]) == 0 && strcmp(nazvanieTekusheyPesny, Songs[i]) == 0) 
+                    if (strcmp(nazvanieTekusheyGruppy, songs[i].group) == 0 && strcmp(nazvanieTekusheyPesny, songs[i].name) == 0) 
 					  {
                         number_of_the_current_Song = i;
                         break;
@@ -235,16 +244,16 @@ int main ()
 				  }
 
                 cout<<"Current song position: "<<number_of_the_current_Song<<endl;
-                cout<<"Now playing: "<<Groups[number_of_the_current_Song]<<" - "<<Songs[number_of_the_current_Song]<<endl;
+                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
                 if (number_of_the_current_Song > 0) 
 				  {
-                    cout<<"Previous song: "<<Groups[number_of_the_current_Song - 1]<<" - "<<Songs[number_of_the_current_Song - 1]<<endl;
+                    cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<<" - "<<songs[number_of_the_current_Song - 1].name<<endl;
                   }
 
                 if (number_of_the_current_Song < real_cout_Songs - 1) 
 				  {
-                    cout<<"Next song: "<<Groups[number_of_the_current_Song + 1]<< " - "<<Songs[number_of_the_current_Song + 1]<<endl;
+                    cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<< " - "<<songs[number_of_the_current_Song + 1].name<<endl;
                   }
                 break;
               }
@@ -258,9 +267,9 @@ int main ()
 
                 for (int i=0; i<real_cout_Songs; ++i) 
 				  {
-                    if (strcmp(str.c_str(), Groups[i]) == 0) 
+                    if (strcmp(str.c_str(), songs[i].group) == 0) 
 					  {
-                        cout<<i + 1<<") "<<Groups[i]<<" - "<<Songs[i]<<endl;
+                        cout<<i + 1<<") "<<songs[i].group<<" - "<<songs[i].name<<endl;
                         nashel = true;
                       }
                   }
@@ -287,9 +296,9 @@ int main ()
 
                 for (int i = 0; i < real_cout_Songs; ++i) 
 				  {
-                    if (strcmp(str2.c_str(), Songs[i]) == 0) 
+                    if (strcmp(str2.c_str(), songs[i].name) == 0) 
 					  {
-                        cout<<i + 1<<") "<<Groups[i]<<" - "<<Songs[i]<<endl;
+                        cout<<i + 1<<") "<<songs[i].group<<" - "<<songs[i].name<<endl;
                         nashel = true;
                       }
                   }
@@ -313,7 +322,7 @@ int main ()
 
                 for (int i = 0; i < real_cout_Songs; ++i) 
 				  {
-                    cout<<Groups[i]<<" - "<<Songs[i]<<endl;
+                    cout<<songs[i].group<<" - "<<songs[i].name<<endl;
                   }
                 break;
               }
@@ -324,7 +333,7 @@ int main ()
 
                 for (int i = 0; i < real_cout_Songs; ++i)
 				  {
-                    cout<<i + 1<<") "<<Groups[i]<<" - "<<Songs[i]<<endl;
+                    cout<<i + 1<<") "<<songs[i].group<<" - "<<songs[i].name<<endl;
                   }
 
                 cout<<"Enter song position, you want to play: "<<endl;
@@ -338,19 +347,19 @@ int main ()
                 if (songNomer > -1 && songNomer<real_cout_Songs) 
 				  {
                     number_of_the_current_Song = songNomer;
-                    ++popularity_Songs[number_of_the_current_Song];
+                    ++songs[number_of_the_current_Song].popularity;
                   }
 
-                cout<<"Now playing: "<<Groups[number_of_the_current_Song]<<" - "<<Songs[number_of_the_current_Song]<<endl;
+                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
                 if (number_of_the_current_Song > 0) 
 				  {
-                    cout<<"Previous song: "<<Groups[number_of_the_current_Song - 1]<<" - "<<Songs[number_of_the_current_Song - 1]<<endl;
+                    cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<<" - "<<songs[number_of_the_current_Song - 1].name<<endl;
                   }
 
                 if (number_of_the_current_Song<real_cout_Songs-1) 
 				  {
-                    cout<<"Next song: "<<Groups[number_of_the_current_Song + 1]<<" - "<<Songs[number_of_the_current_Song + 1]<<endl;
+                    cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<<" - "<<songs[number_of_the_current_Song + 1].name<<endl;
                   }
 
                 break;
@@ -358,7 +367,7 @@ int main ()
 
             case 9: 
 			  {
-                cout<<"Now playing: "<<Groups[number_of_the_current_Song]<<" - "<<Songs[number_of_the_current_Song]<<endl;
+                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
                 break;
               }
 
@@ -366,9 +375,9 @@ int main ()
 			  {
                 for (int i =0; i < real_cout_Songs;++i) 
 				  {
-                    songs_in_Top[i]= Songs[i];
-                    groups_in_Top[i] =Groups[i];
-                    popularity_songs_in_Top[i]=popularity_Songs[i];
+                    songs_in_Top[i]= songs[i].name;
+                    groups_in_Top[i] =songs[i].group;
+                    popularity_songs_in_Top[i]=songs[i].popularity;
                   }
 
                 for (int i = 1;i< real_cout_Songs;++i) 
@@ -403,47 +412,47 @@ int main ()
 
             case 11: 
 		      {
-				const char* currentSongName = Songs[number_of_the_current_Song];
-                const char* currentBandName = Groups[number_of_the_current_Song];
-                int currentSongPopularity = popularity_Songs[number_of_the_current_Song];
+				const char* currentSongName = songs[number_of_the_current_Song].name;
+                const char* currentBandName = songs[number_of_the_current_Song].group;
+                int currentSongPopularity = songs[number_of_the_current_Song].popularity;
 
                 for (int i = 1; i < real_cout_Songs; ++i) 
 				  { 
-					const char* vremenoeNazvanyePesny = Songs[i];
-                    const char* vremenoeNazvanyeGruppy = Groups[i];
-                    int popularnostVremennoyPesny = popularity_Songs[i];
+					char* vremenoeNazvanyePesny = songs[i].name;
+                    char* vremenoeNazvanyeGruppy = songs[i].group;
+                    int popularnostVremennoyPesny = songs[i].popularity;
                     int j = i - 1;
 
-                    while (j > -1 && popularity_Songs[j] < popularnostVremennoyPesny) 
+                    while (j > -1 && songs[j].popularity < popularnostVremennoyPesny) 
 					  {
-                        Songs[j + 1] = Songs[j];
-                        Groups[j + 1] = Groups[j];
-                        popularity_Songs[j + 1] = popularity_Songs[j];
+                        songs[j + 1].name = songs[j].name;
+                        songs[j + 1].group = songs[j].group;
+                        songs[j + 1].popularity = songs[j].popularity;
                         --j;
                       }
 
-                    Songs[j + 1] = vremenoeNazvanyePesny;
-                    Groups[j + 1] = vremenoeNazvanyeGruppy;
-                    popularity_Songs[j + 1] = popularnostVremennoyPesny;
+                    songs[j + 1].name = vremenoeNazvanyePesny;
+                    songs[j + 1].group = vremenoeNazvanyeGruppy;
+                    songs[j + 1].popularity = popularnostVremennoyPesny;
                   }
 
                 cout<<"New playlist order "<<endl;
 
                 for (int i = 0; i < real_cout_Songs; ++i)
 				  {
-                    cout<<Groups[i]<<" - "<<Songs[i]<<endl;
+                    cout<<songs[i].group<<" - "<<songs[i].name<<endl;
                   }
 
                 for (int i = 0; i < real_cout_Songs; ++i)
                   {
-                    if (strcmp(currentBandName, Groups[i]) == 0 && strcmp(currentSongName, Songs[i]) == 0) 
+                    if (strcmp(currentBandName, songs[i].group) == 0 && strcmp(currentSongName, songs[i].name) == 0) 
 					  {
                         number_of_the_current_Song = i;
                         break; 
 					  }
                   }
 
-                cout<<"Now playing: "<<Groups[number_of_the_current_Song]<<" - "<<Songs[number_of_the_current_Song]<<endl;
+                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
                 cout<<"Song, you are listening on "<<number_of_the_current_Song + 1<<" position of chart"<<endl;
                 break;
               }
@@ -452,9 +461,9 @@ int main ()
 			  {
                 for (int i = 0; i < real_cout_Songs; ++i)
                   {
-                    songs_in_Top[i] = Songs[i];
-                    groups_in_Top[i] = Groups[i];
-                    popularity_songs_in_Top[i] = popularity_Songs[i]; 
+                    songs_in_Top[i] = songs[i].name;
+                    groups_in_Top[i] = songs[i].group;
+                    popularity_songs_in_Top[i] = songs[i].popularity; 
 				  }
 
                 for (int i = 1; i < real_cout_Songs; ++i) 
