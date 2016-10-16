@@ -4,6 +4,43 @@
 
 using namespace std;
 
+const char* TEMP_NAME_SONG;
+const char*	TEMP_NAME_GROUP;
+
+int real_cout_Songs = 14;
+int number_of_the_current_Song = 0;
+
+void new_playlist_order()
+  {
+    cout<<"New playlist order "<<endl;
+
+    for (int i = 0; i < real_cout_Songs; ++i) 
+      {
+        cout<<songs[i].group<< " - "<<songs[i].name<<endl;
+      }
+
+	for (int i = 0; i < real_cout_Songs; ++i)
+	  {
+        if (strcmp(TEMP_NAME_GROUP, songs[i].group) == 0 && strcmp(TEMP_NAME_SONG, songs[i].name) == 0) 
+		  {
+            number_of_the_current_Song = i;
+            break;
+          }
+	  }
+  }
+
+void cout_beside_song()
+ {
+   if(number_of_the_current_Song > 0) 
+     {
+	   cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<< " - " <<songs[number_of_the_current_Song - 1].name<<endl;
+     }
+
+   if(number_of_the_current_Song < real_cout_Songs - 1) 
+	 {
+	   cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<<" - "<<songs[number_of_the_current_Song + 1].name<<endl;
+     }
+ }
 
 
 struct Song  
@@ -24,10 +61,7 @@ int main ()
     char* songs_in_Top[COUNT_SONGS];
     char* groups_in_Top[COUNT_SONGS];   
     int popularity_songs_in_Top[COUNT_SONGS];
-
-    int real_cout_Songs = 0;
-    int number_of_the_current_Song = 0;
-
+   
 	bool isDone = true;
 
     songs[0].name = "Should I Stay or Should I Go";
@@ -86,23 +120,13 @@ int main ()
     songs[13].group = "The Smiths";
     songs[13].popularity = 0;
 
-    real_cout_Songs = 14;
-
     while (isDone) 
 	  {
 		int selection = -1;
 
 		cout<<endl<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
-		if(number_of_the_current_Song > 0) 
-		  {
-		    cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<< " - " <<songs[number_of_the_current_Song - 1].name<<endl;
-          }
-
-        if(number_of_the_current_Song < real_cout_Songs - 1) 
-		  {
-		    cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<<" - "<<songs[number_of_the_current_Song + 1].name<<endl;
-          }
+		cout_beside_song();
 
         cout<<"Enter action you want to make: "<<endl;
         cout<<"1) Play next"<<endl;
@@ -146,8 +170,8 @@ int main ()
 
             case 3: 
 		      {
-                const char* temp_name_song = songs[number_of_the_current_Song].name;
-                const char* temp_name_group = songs[number_of_the_current_Song].group;               
+                TEMP_NAME_SONG = songs[number_of_the_current_Song].name;
+                TEMP_NAME_GROUP = songs[number_of_the_current_Song].group;               
 
 			    for(int i = 1; i < real_cout_Songs; ++i)
 			      {
@@ -162,42 +186,20 @@ int main ()
                     songs[j+1] = tempSong;                    
                   }
 
-                cout<<"New playlist order "<<endl;
-
-                for (int i = 0; i < real_cout_Songs; ++i) 
-		 	      {
-                   cout<<songs[i].group<< " - "<<songs[i].name<<endl;
-                  }
-
-                for (int i = 0; i < real_cout_Songs; ++i) 
-			      {
-                    if (strcmp(temp_name_group, songs[i].group)==0 && strcmp(temp_name_song, songs[i].name)== 0) 
-			          {
-                        number_of_the_current_Song = i;
-                        break;
-                      }
-                  }
-
+                new_playlist_order();
+               
                 cout<<"Current song position: "<<number_of_the_current_Song + 1<<endl;
 			    cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
-                if (number_of_the_current_Song > 0) 
-			      {
-                    cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<<" - "<<songs[number_of_the_current_Song - 1].name<<endl;
-                  }
-            
-			    if (number_of_the_current_Song < real_cout_Songs - 1) 
-				  {
-                    cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<<" - "<<songs[number_of_the_current_Song + 1].name<<endl;
-				  }
+                cout_beside_song();
 
                 break;
               }
 
             case 4: 
 	          {
-                const char* temp_name_song = songs[number_of_the_current_Song].name;
-                const char* temp_name_group = songs[number_of_the_current_Song].group;
+                TEMP_NAME_SONG = songs[number_of_the_current_Song].name;
+                TEMP_NAME_GROUP = songs[number_of_the_current_Song].group;
                 int popularnost_tekushey_Gruppy = songs[number_of_the_current_Song].popularity;
 
                 for (int i = 1; i<real_cout_Songs; ++i) 
@@ -214,34 +216,13 @@ int main ()
                     songs[j + 1] = tempSong;                    
                   }
 
-                cout<< "New playlist order "<<endl;
-
-                for (int i = 0; i<real_cout_Songs; ++i)
-                  {
-                    cout<<songs[i].group<<" - "<<songs[i].name<<endl;
-                  }
-
-                for (int i = 0; i < real_cout_Songs; ++i)
-				  {
-                    if (strcmp(temp_name_group, songs[i].group) == 0 && strcmp(temp_name_song, songs[i].name) == 0) 
-					  {
-                        number_of_the_current_Song = i;
-                        break;
-                      }
-				  }
-
+                new_playlist_order();
+               
                 cout<<"Current song position: "<<number_of_the_current_Song<<endl;
                 cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
-                if (number_of_the_current_Song > 0) 
-				  {
-                    cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<<" - "<<songs[number_of_the_current_Song - 1].name<<endl;
-                  }
+                cout_beside_song();
 
-                if (number_of_the_current_Song < real_cout_Songs - 1) 
-				  {
-                    cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<< " - "<<songs[number_of_the_current_Song + 1].name<<endl;
-                  }
                 break;
               }
 
