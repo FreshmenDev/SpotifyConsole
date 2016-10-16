@@ -1,81 +1,43 @@
 #include <iostream>
 #include <string>
 
+const int AMOUNT_OF_SONGS = 20;
 
-int main () {
-    const int KOLICHESTVO_PESEN_VSEGO = 20;
+struct Song
+{
+	char* track;
+	char* group;
+	int popularity;
+}allSongs[AMOUNT_OF_SONGS];
 
-    const char* massiv_pesen[KOLICHESTVO_PESEN_VSEGO];
-    const char* massivGrupp[KOLICHESTVO_PESEN_VSEGO];
-    int popularnost_pesen[KOLICHESTVO_PESEN_VSEGO];
+const char* topSongs[AMOUNT_OF_SONGS];
+const char* topGroups[AMOUNT_OF_SONGS];
+int popularityIndex[AMOUNT_OF_SONGS];
 
 
-    const char* pesny_VTope[KOLICHESTVO_PESEN_VSEGO];
-    const char* gruppy_v_tope[KOLICHESTVO_PESEN_VSEGO];
-    int popularnost_pesen_v_tope[KOLICHESTVO_PESEN_VSEGO];
+int main () 
+{
+    int amountOfAllSongs = 0;
+	int numberOfTheCurrentSong = 0;
 
-    int realnoe_kolichestvo_pesen = 0;
-    int nomerTeckusheyPensy = 0;
+	allSongs[0] = { "Should I Stay or Should I Go", "The Clash", 0 };
+	allSongs[1] = { "Baby don't lie to me", "The Fratellis", 0 };
+	allSongs[2] = { "Ole Black 'n' Blue Eyes", "The Fratellis", 0 };
+	allSongs[3] = { "Like A Champion", "The Baseballs", 0 };
+	allSongs[4] = { "Jackie and Wilson", "Hoizer", 0 };
+	allSongs[5] = { "Mountains", "Message To Bears", 0 };
+	allSongs[6] = { "When It's Cold I'd Like to Die", "Moby", 0 };
+	allSongs[7] = { "Damn Your Eyes", "Alex Clare", 0 };
+	allSongs[8] = { "Heroes", "David Bowie", 0 };
+	allSongs[9] = { "No Diggity", "Chet Faker", 0 };
+	allSongs[10] = { "Inhaler", "Foals", 0 };
+	allSongs[11] = { "London Thunder", "Foals", 0 };
+	allSongs[12] = { "Spanish Sahara", "Foals", 0 };
+	allSongs[13] = { "Asleep", "The Smiths", 0 };
 
-    massiv_pesen[0] = "Should I Stay or Should I Go";
-    massivGrupp[0] = "The Clash";
-    popularnost_pesen[0] = 0;
+	amountOfAllSongs = 14;
 
-    massiv_pesen[1] = "Baby don't lie to me";
-    massivGrupp[1] = "The Fratellis";
-    popularnost_pesen[1] = 0;
-
-    massiv_pesen[2] = "Ole Black 'n' Blue Eyes";
-    massivGrupp[2] = "The Fratellis";
-    popularnost_pesen[2] = 0;
-
-    massiv_pesen[3] = "Like A Champion";
-    massivGrupp[3] = "The Baseballs";
-    popularnost_pesen[3] = 0;
-
-    massiv_pesen[4] = "Jackie and Wilson";
-    massivGrupp[4] = "Hoizer";
-    popularnost_pesen[4] = 0;
-
-    massiv_pesen[5] = "Mountains";
-    massivGrupp[5] = "Message To Bears";
-    popularnost_pesen[5] = 0;
-
-    massiv_pesen[6] = "When It's Cold I'd Like to Die";
-    massivGrupp[6] = "Moby";
-    popularnost_pesen[6] = 0;
-
-    massiv_pesen[7] = "Damn Your Eyes";
-    massivGrupp[7] = "Alex Clare";
-    popularnost_pesen[7] = 0;
-
-    massiv_pesen[8] = "Heroes";
-    massivGrupp[8] = "David Bowie";
-    popularnost_pesen[8] = 0;
-
-    massiv_pesen[9] = "No Diggity";
-    massivGrupp[9] = "Chet Faker";
-    popularnost_pesen[9] = 0;
-
-    massiv_pesen[10] = "Inhaler";
-    massivGrupp[10] = "Foals";
-    popularnost_pesen[10] = 0;
-
-    massiv_pesen[11] = "London Thunder";
-    massivGrupp[11] = "Foals";
-    popularnost_pesen[11] = 0;
-
-    massiv_pesen[12] = "Spanish Sahara";
-    massivGrupp[12] = "Foals";
-    popularnost_pesen[12] = 0;
-
-    massiv_pesen[13] = "Asleep";
-    massivGrupp[13] = "The Smiths";
-    popularnost_pesen[13] = 0;
-
-    realnoe_kolichestvo_pesen = 14;
-
-    bool prodolgitRabotu = true;
+	bool continueWork = true;
 
     while (prodolgitRabotu) { int vybor = -1;
 
@@ -92,32 +54,20 @@ int main () {
         }
 
 
-        std::cout << "Enter action you want to make: " << std::endl;
-
-        std::cout << "1) Play next" << std::endl;
-
-        std::cout << "2) Play prev" << std::endl;
-
-        std::cout << "3) Group by band" << std::endl;
-
-                            std::cout << "4) Group by song name" << std::endl;
-
-           std::cout << "5) Search song by band " << std::endl;
-
-                            std::cout << "6) Search song by name " << std::endl;
-            std::cout << "7) Show playlist " << std::endl;
-
-                            std::cout << "8) Play specific song (specified by position) " << std::endl;
-
-        std::cout << "9) What is playing now? " << std::endl;
-
-        std::cout << "10) Show my chart " << std::endl;
-
-        std::cout << "11) Sort by popularity " << std::endl;
-
-                std::cout << "12) Show the most popular band " << std::endl;
-
-        std::cout << "13) Exit " << std::endl;
+        std::cout << "Enter action you want to make: \n" <<
+			"1) Play next\n" <<
+			"2) Play prev\n" <<
+			"3) Group by band\n" <<
+			"4) Group by song name\n" <<
+			"5) Search song by band \n" <<
+			"6) Search song by name \n" <<
+			"7) Show playlist \n" <<
+			"8) Play specific song (specified by position) \n" <<
+			"9) What is playing now? \n" <<
+			"10) Show my chart \n" <<
+			"11) Sort by popularity \n" <<
+			"12) Show the most popular band \n" <<
+			"13) Exit \n";
 
         std::cin >> vybor;
 
