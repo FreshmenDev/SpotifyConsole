@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 
+using std::cout;
+using std::cin;
+using std::endl;
 
 int main () {
     const int KOLICHESTVO_PESEN_VSEGO = 20;
@@ -79,49 +82,49 @@ int main () {
 
     while (prodolgitRabotu) { int vybor = -1;
 
-        std::cout << std::endl << "Now playing: " <<
-                  massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << std::endl;
+        cout << endl << "Now playing: " <<
+                  massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << endl;
 
-        if (nomerTeckusheyPensy > 0) {std::cout << "Previous song: " <<
-                        massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << std::endl;
+        if (nomerTeckusheyPensy > 0) {cout << "Previous song: " <<
+                        massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << endl;
         }
 
         if (nomerTeckusheyPensy <realnoe_kolichestvo_pesen - 1) {
-            std::cout << "Next song: " <<
-                          massivGrupp[nomerTeckusheyPensy + 1] << " - " << massiv_pesen[nomerTeckusheyPensy + 1] << std::endl;
+            cout << "Next song: " <<
+                          massivGrupp[nomerTeckusheyPensy + 1] << " - " << massiv_pesen[nomerTeckusheyPensy + 1] << endl;
         }
 
 
-        std::cout << "Enter action you want to make: " << std::endl;
+        cout << "Enter action you want to make: " << endl;
 
-        std::cout << "1) Play next" << std::endl;
+        cout << "1) Play next" << endl;
 
-        std::cout << "2) Play prev" << std::endl;
+        cout << "2) Play prev" << endl;
 
-        std::cout << "3) Group by band" << std::endl;
+        cout << "3) Group by band" << endl;
 
-                            std::cout << "4) Group by song name" << std::endl;
+                            cout << "4) Group by song name" << endl;
 
-           std::cout << "5) Search song by band " << std::endl;
+           cout << "5) Search song by band " << endl;
 
-                            std::cout << "6) Search song by name " << std::endl;
-            std::cout << "7) Show playlist " << std::endl;
+                            cout << "6) Search song by name " << endl;
+            cout << "7) Show playlist " << endl;
 
-                            std::cout << "8) Play specific song (specified by position) " << std::endl;
+                            cout << "8) Play specific song (specified by position) " << endl;
 
-        std::cout << "9) What is playing now? " << std::endl;
+        cout << "9) What is playing now? " << endl;
 
-        std::cout << "10) Show my chart " << std::endl;
+        cout << "10) Show my chart " << endl;
 
-        std::cout << "11) Sort by popularity " << std::endl;
+        cout << "11) Sort by popularity " << endl;
 
-                std::cout << "12) Show the most popular band " << std::endl;
+                cout << "12) Show the most popular band " << endl;
 
-        std::cout << "13) Exit " << std::endl;
+        cout << "13) Exit " << endl;
 
-        std::cin >> vybor;
+        cin >> vybor;
 
-        std::cin.ignore();
+        cin.ignore();
 
         switch (vybor) {
             case 1: {
@@ -165,10 +168,10 @@ int main () {
                     popularnost_pesen[j + 1] = variable;
                 }
 
-                std::cout << "New playlist order " << std::endl;
+                cout << "New playlist order " << endl;
 
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i) {
-                    std::cout << massivGrupp[i] << " - " << massiv_pesen[i] << std::endl;
+                    cout << massivGrupp[i] << " - " << massiv_pesen[i] << endl;
                 }
 
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i) {
@@ -179,19 +182,19 @@ int main () {
                     }
                 }
 
-                std::cout << "Current song position: " << nomerTeckusheyPensy + 1 << std::endl;
+                cout << "Current song position: " << nomerTeckusheyPensy + 1 << endl;
 
-                std::cout << "Now playing: " <<
-                          massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << std::endl;
+                cout << "Now playing: " <<
+                          massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << endl;
 
                 if (nomerTeckusheyPensy > 0) {
-                    std::cout << "Previous song: " <<
-                              massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << std::endl;
+                    cout << "Previous song: " <<
+                              massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << endl;
                 }
 
                 if (nomerTeckusheyPensy < realnoe_kolichestvo_pesen - 1) {
-                    std::cout << "Next song: " <<
-                              massivGrupp[nomerTeckusheyPensy + 1] << " - " << massiv_pesen[nomerTeckusheyPensy + 1] << std::endl;
+                    cout << "Next song: " <<
+                              massivGrupp[nomerTeckusheyPensy + 1] << " - " << massiv_pesen[nomerTeckusheyPensy + 1] << endl;
                 }
                 break;
             }
@@ -219,11 +222,11 @@ int main () {
                     popularnost_pesen[j + 1] = popularnostVremennoyPesny;
                 }
 
-                std::cout << "New playlist order " << std::endl;
+                cout << "New playlist order " << endl;
 
                 for (int i = 0; i<realnoe_kolichestvo_pesen; ++i)
                 {
-                    std::cout << massivGrupp[i] <<" - " << massiv_pesen[i] << std::endl;
+                    cout << massivGrupp[i] <<" - " << massiv_pesen[i] << endl;
                 }
 
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i){
@@ -233,40 +236,40 @@ int main () {
                         break;
                     }}
 
-                std::cout<<"Current song position: "<<nomerTeckusheyPensy<< std::endl;
+                cout<<"Current song position: "<<nomerTeckusheyPensy<< endl;
 
-                std::cout<<"Now playing: " <<
-                          massivGrupp[nomerTeckusheyPensy]<<" - "<< massiv_pesen[nomerTeckusheyPensy] << std::endl;
+                cout<<"Now playing: " <<
+                          massivGrupp[nomerTeckusheyPensy]<<" - "<< massiv_pesen[nomerTeckusheyPensy] << endl;
 
                 if (nomerTeckusheyPensy > 0) {
-                    std::cout << "Previous song: " <<
-                              massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << std::endl;
+                    cout << "Previous song: " <<
+                              massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << endl;
                 }
 
                 if (nomerTeckusheyPensy < realnoe_kolichestvo_pesen - 1) {
-                    std::cout << "Next song: " <<
-                              massivGrupp[nomerTeckusheyPensy + 1] << " - " << massiv_pesen[nomerTeckusheyPensy + 1] << std::endl;
+                    cout << "Next song: " <<
+                              massivGrupp[nomerTeckusheyPensy + 1] << " - " << massiv_pesen[nomerTeckusheyPensy + 1] << endl;
                 }
                 break;
             }
 
             case 5: {
                 std::string str;
-                std::cout << "Input band name you are looking for: " << std::endl;
-                std::getline(std::cin, str);
+                cout << "Input band name you are looking for: " << endl;
+                std::getline(cin, str);
                 bool nashel=false;
                 for (int i=0; i<realnoe_kolichestvo_pesen; ++i) {
                     if (std::strcmp(str.c_str(), massivGrupp[i]) == 0) {
-                        std::cout << i + 1 << ") " << massivGrupp[i] << " - " << massiv_pesen[i] << std::endl;
+                        cout << i + 1 << ") " << massivGrupp[i] << " - " << massiv_pesen[i] << endl;
                         nashel = true;
                     }
                 }
 
                 if(nashel){
-                    std::cout << "Now you can play any song by it position" << std::endl;
+                    cout << "Now you can play any song by it position" << endl;
                 } else
                 {
-                    std::cout << "There are no pesny with band name like this " << str << std::endl;
+                    cout << "There are no pesny with band name like this " << str << endl;
                 }
 
                 break;
@@ -274,50 +277,50 @@ int main () {
 
             case 6: {
                 std::string str2;
-                std::cout << "Input song name you are looking for: " << std::endl;
-                std::getline(std::cin, str2);
+                cout << "Input song name you are looking for: " << endl;
+                std::getline(cin, str2);
                 bool nashel = false;
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i) {
                     if (std::strcmp(str2.c_str(), massiv_pesen[i]) == 0) {
-                        std::cout << i + 1 << ") " << massivGrupp[i] << " - " << massiv_pesen[i] << std::endl;
+                        cout << i + 1 << ") " << massivGrupp[i] << " - " << massiv_pesen[i] << endl;
                         nashel = true;
                     }
                 }
 
                 if (nashel)
                 {
-                    std::cout << "Now you can play any song by it position" << std::endl;
+                    cout << "Now you can play any song by it position" << endl;
                 }
 
                 else {
-                    std::cout << "There are no pesny with name like this " << str2 << std::endl;
+                    cout << "There are no pesny with name like this " << str2 << endl;
                 }
 
                 break;
             }
 
             case 7: {
-                std::cout << "Playlist: " << std::endl;
+                cout << "Playlist: " << endl;
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i) {
-                    std::cout << massivGrupp[i] << " - " << massiv_pesen[i] << std::endl;
+                    cout << massivGrupp[i] << " - " << massiv_pesen[i] << endl;
                 }
                 break;
             }
 
             case 8: {
-                std::cout << "Ok, here is the playlist: " << std::endl;
+                cout << "Ok, here is the playlist: " << endl;
 
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i){
-                    std::cout << i + 1 << ") " << massivGrupp[i] << " - " << massiv_pesen[i] << std::endl;
+                    cout << i + 1 << ") " << massivGrupp[i] << " - " << massiv_pesen[i] << endl;
                 }
 
-                std::cout <<"Enter song position, you want to play: " << std::endl;
+                cout <<"Enter song position, you want to play: " << endl;
 
                 int songNomer;
 
-                std::cin >> songNomer;
+                cin >> songNomer;
 
-                std::cin.ignore();
+                cin.ignore();
 
                 --songNomer;
 
@@ -326,25 +329,25 @@ int main () {
                     ++popularnost_pesen[nomerTeckusheyPensy];
                 }
 
-                std::cout << "Now playing: " <<
-                          massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << std::endl;
+                cout << "Now playing: " <<
+                          massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << endl;
 
                 if (nomerTeckusheyPensy > 0) {
-                    std::cout << "Previous song: " <<
-                              massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << std::endl;
+                    cout << "Previous song: " <<
+                              massivGrupp[nomerTeckusheyPensy - 1] << " - " << massiv_pesen[nomerTeckusheyPensy - 1] << endl;
                 }
 
                 if (nomerTeckusheyPensy<realnoe_kolichestvo_pesen-1) {
-                    std::cout << "Next song: " <<
-                              massivGrupp[nomerTeckusheyPensy + 1]<< " - "<< massiv_pesen[nomerTeckusheyPensy + 1] << std::endl;
+                    cout << "Next song: " <<
+                              massivGrupp[nomerTeckusheyPensy + 1]<< " - "<< massiv_pesen[nomerTeckusheyPensy + 1] << endl;
                 }
 
                 break;
             }
 
             case 9: {
-                std::cout<< "Now playing: "<<
-                          massivGrupp[nomerTeckusheyPensy] <<" - " <<massiv_pesen[nomerTeckusheyPensy] << std::endl;
+                cout<< "Now playing: "<<
+                          massivGrupp[nomerTeckusheyPensy] <<" - " <<massiv_pesen[nomerTeckusheyPensy] << endl;
                 break;
             }
 
@@ -372,10 +375,10 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
                     popularnost_pesen_v_tope[j + 1] = popularnostVremennoyPesny;
                 }
 
-                std::cout << "Chart: " << std::endl;
+                cout << "Chart: " << endl;
 
                 for(int i=0;i <realnoe_kolichestvo_pesen;++i){
-                    std::cout<< (i + 1) << ") "<< gruppy_v_tope[i]<< " - "<< pesny_VTope[i] << std::endl;
+                    cout<< (i + 1) << ") "<< gruppy_v_tope[i]<< " - "<< pesny_VTope[i] << endl;
                 }
 
                 break;
@@ -403,10 +406,10 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
                     popularnost_pesen[j + 1] = popularnostVremennoyPesny;
                 }
 
-                std::cout << "New playlist order " << std::endl;
+                cout << "New playlist order " << endl;
 
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i) {
-                    std::cout << massivGrupp[i] << " - " << massiv_pesen[i] << std::endl;
+                    cout << massivGrupp[i] << " - " << massiv_pesen[i] << endl;
                 }
 
                 for (int i = 0; i < realnoe_kolichestvo_pesen; ++i)
@@ -417,9 +420,9 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
                         break; }
                 }
 
-                std::cout << "Now playing: " << massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << std::endl;
+                cout << "Now playing: " << massivGrupp[nomerTeckusheyPensy] << " - " << massiv_pesen[nomerTeckusheyPensy] << endl;
 
-                std::cout << "Song, you are listening on " << nomerTeckusheyPensy + 1 << " position of chart" << std::endl;
+                cout << "Song, you are listening on " << nomerTeckusheyPensy + 1 << " position of chart" << endl;
                 break;
             }
 
@@ -451,7 +454,7 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
                     popularnost_pesen_v_tope[j + 1] = temp3;
                 }
 
-                    std::cout << "Most popular band is: " << gruppy_v_tope[0] << std::endl;
+                    cout << "Most popular band is: " << gruppy_v_tope[0] << endl;
                 break;
             }
 
@@ -461,9 +464,9 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
             }
 
             default:
-                std::cout << "Unknown command." << std::endl;
+                cout << "Unknown command." << endl;
         }
     }
 
-    std::cout << "Goodbye!" << std::endl;
+    cout << "Goodbye!" << endl;
 }
