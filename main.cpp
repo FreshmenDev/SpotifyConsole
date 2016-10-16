@@ -250,18 +250,18 @@ int main ()
                 string str;
                 cout<<"Input band name you are looking for: "<<endl;
                 getline(cin, str);
-                bool nashel=false;
+                bool found=false;
 
                 for (int i=0; i<real_cout_Songs; ++i) 
 				  {
                     if (strcmp(str.c_str(), songs[i].group) == 0) 
 					  {
                         cout<<i + 1<<") "<<songs[i].group<<" - "<<songs[i].name<<endl;
-                        nashel = true;
+                        found = true;
                       }
                   }
 
-                if(nashel)
+                if(found)
 				  {
                     cout<<"Now you can play any song by it position"<<endl;
                   } 
@@ -279,18 +279,18 @@ int main ()
                 string str2;
                 cout<<"Input song name you are looking for: "<<endl;
                 getline(cin, str2);
-                bool nashel = false;
+                bool found = false;
 
                 for (int i = 0; i < real_cout_Songs; ++i) 
 				  {
                     if (strcmp(str2.c_str(), songs[i].name) == 0) 
 					  {
                         cout<<i + 1<<") "<<songs[i].group<<" - "<<songs[i].name<<endl;
-                        nashel = true;
+                        found = true;
                       }
                   }
 
-                if (nashel)
+                if (found)
                   {
                     cout<<"Now you can play any song by it position"<<endl;
                   }
