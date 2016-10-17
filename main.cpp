@@ -19,7 +19,10 @@ const char*	TEMP_NAME_GROUP;
 int real_cout_Songs = 14;
 int number_of_the_current_Song = 0;
 
+string sought_word;
+
 bool isDone = true;
+bool found;
 
 Song songs [COUNT_SONGS];
 Song popularity [COUNT_SONGS];
@@ -44,18 +47,39 @@ void new_playlist_order()
 	  }
   }
 
-void cout_beside_song()
+void cout_now_playing()
+{
+  cout<<endl<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
+}
+
+void cout_previous_song()
  {
    if(number_of_the_current_Song > 0) 
      {
 	   cout<<"Previous song: "<<songs[number_of_the_current_Song - 1].group<< " - " <<songs[number_of_the_current_Song - 1].name<<endl;
-     }
+     }   
+ }
 
+void cout_next_song()
+ {   
    if(number_of_the_current_Song < real_cout_Songs - 1) 
 	 {
 	   cout<<"Next song: "<<songs[number_of_the_current_Song + 1].group<<" - "<<songs[number_of_the_current_Song + 1].name<<endl;
      }
  }
+
+void if_found()
+{
+	if(found)
+	  {
+        cout<<"Now you can play any song by it position"<<endl;
+      } 
+
+	else
+      {
+        cout<<"There are no song with band name like this "<<sought_word<<endl;
+      }
+}
 
 int main () 
 {	              
@@ -118,10 +142,11 @@ int main ()
     while (isDone) 
 	  {
 		int selection = -1;
+	    found = false;
 
-		cout<<endl<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
-
-		cout_beside_song();
+		cout_now_playing();
+	    cout_previous_song();
+		cout_next_song();
 
         cout<<"Enter action you want to make: "<<endl;
         cout<<"1) Play next"<<endl;
@@ -184,9 +209,10 @@ int main ()
                 new_playlist_order();
                
                 cout<<"Current song position: "<<number_of_the_current_Song + 1<<endl;
-			    cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
-                cout_beside_song();
+			    cout_now_playing();
+	            cout_previous_song();
+		        cout_next_song();
 
                 break;
               }
@@ -214,67 +240,48 @@ int main ()
                 new_playlist_order();
                
                 cout<<"Current song position: "<<number_of_the_current_Song<<endl;
-                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
 
-                cout_beside_song();
+                cout_now_playing();
+	            cout_previous_song();
+		        cout_next_song();
 
                 break;
               }
 
             case 5: 
-		      {
-                string str;
+		      {             
                 cout<<"Input band name you are looking for: "<<endl;
-                getline(cin, str);
-                bool found=false;
-
+                getline(cin, sought_word);
+                
                 for (int i=0; i<real_cout_Songs; ++i) 
 				  {
-                    if (strcmp(str.c_str(), songs[i].group) == 0) 
+                    if (strcmp(sought_word.c_str(), songs[i].group) == 0) 
 					  {
                         cout<<i + 1<<") "<<songs[i].group<<" - "<<songs[i].name<<endl;
                         found = true;
                       }
                   }
 
-                if(found)
-				  {
-                    cout<<"Now you can play any song by it position"<<endl;
-                  } 
-
-				else
-                  {
-                    cout<<"There are no pesny with band name like this "<<str<<endl;
-                  }
+                if_found();
 
                 break;
               }
 
             case 6: 
-		      {
-                string str2;
+		      {                
                 cout<<"Input song name you are looking for: "<<endl;
-                getline(cin, str2);
-                bool found = false;
-
+                getline(cin, sought_word);
+               
                 for (int i = 0; i < real_cout_Songs; ++i) 
 				  {
-                    if (strcmp(str2.c_str(), songs[i].name) == 0) 
+                    if (strcmp(sought_word.c_str(), songs[i].name) == 0) 
 					  {
                         cout<<i + 1<<") "<<songs[i].group<<" - "<<songs[i].name<<endl;
                         found = true;
                       }
                   }
 
-                if (found)
-                  {
-                    cout<<"Now you can play any song by it position"<<endl;
-                  }
-
-                else 
-				  {
-                    cout<<"There are no pesny with name like this "<<str2<<endl;
-                  }
+                if_found();
 
                 break;
               }
@@ -313,17 +320,17 @@ int main ()
                     ++songs[number_of_the_current_Song].popularity;
                   }
 
-                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
-
-                cout_beside_song();
+                cout_now_playing();
+	            cout_previous_song();
+		        cout_next_song();
 
                 break;
               }
 
             case 9: 
 			  {
-                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
-                break;
+                cout_now_playing();
+				break;
               }
 
             case 10: 
@@ -376,23 +383,9 @@ int main ()
                     songs[j + 1] = tempSong;                    
                   }
 
-                cout<<"New playlist order "<<endl;
+                new_playlist_order();
+                cout_now_playing();
 
-                for (int i = 0; i < real_cout_Songs; ++i)
-				  {
-                    cout<<songs[i].group<<" - "<<songs[i].name<<endl;
-                  }
-
-                for (int i = 0; i < real_cout_Songs; ++i)
-                  {
-                    if (strcmp(TEMP_NAME_GROUP, songs[i].group) == 0 && strcmp(TEMP_NAME_SONG, songs[i].name) == 0) 
-					  {
-                        number_of_the_current_Song = i;
-                        break; 
-					  }
-                  }
-
-                cout<<"Now playing: "<<songs[number_of_the_current_Song].group<<" - "<<songs[number_of_the_current_Song].name<<endl;
                 cout<<"Song, you are listening on "<<number_of_the_current_Song + 1<<" position of chart"<<endl;
                 break;
               }
