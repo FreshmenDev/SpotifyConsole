@@ -426,4 +426,5 @@ int main ()
       }
 
 	cout<<"Goodbye!"<<endl;
+	system("pause");
 }
