@@ -3,16 +3,16 @@
 
 
 int main () {
-    const int KOLICHESTVO_PESEN_VSEGO = 20;
+    const int TOTAL_NUMBER_OF_SONGS = 20; // количество песен всего
 
-    const char* massiv_pesen[KOLICHESTVO_PESEN_VSEGO];
-    const char* massivGrupp[KOLICHESTVO_PESEN_VSEGO];
-    int popularnost_pesen[KOLICHESTVO_PESEN_VSEGO];
+    const char* massiv_pesen[TOTAL_NUMBER_OF_SONGS];
+    const char* massivGrupp[TOTAL_NUMBER_OF_SONGS];
+    int popularnost_pesen[TOTAL_NUMBER_OF_SONGS];
 
 
-    const char* pesny_VTope[KOLICHESTVO_PESEN_VSEGO];
-    const char* gruppy_v_tope[KOLICHESTVO_PESEN_VSEGO];
-    int popularnost_pesen_v_tope[KOLICHESTVO_PESEN_VSEGO];
+    const char* pesny_VTope[TOTAL_NUMBER_OF_SONGS];
+    const char* gruppy_v_tope[TOTAL_NUMBER_OF_SONGS];
+    int popularnost_pesen_v_tope[TOTAL_NUMBER_OF_SONGS];
 
     int realnoe_kolichestvo_pesen = 0;
     int nomerTeckusheyPensy = 0;
