@@ -93,30 +93,18 @@ int main () {
 
 
         std::cout << "Enter action you want to make: " << std::endl;
-
         std::cout << "1) Play next" << std::endl;
-
         std::cout << "2) Play prev" << std::endl;
-
         std::cout << "3) Group by band" << std::endl;
-
-                            std::cout << "4) Group by song name" << std::endl;
-
-           std::cout << "5) Search song by band " << std::endl;
-
-                            std::cout << "6) Search song by name " << std::endl;
-            std::cout << "7) Show playlist " << std::endl;
-
-                            std::cout << "8) Play specific song (specified by position) " << std::endl;
-
+        std::cout << "4) Group by song name" << std::endl;
+        std::cout << "5) Search song by band " << std::endl;
+        std::cout << "6) Search song by name " << std::endl;
+        std::cout << "7) Show playlist " << std::endl;
+		std::cout << "8) Play specific song (specified by position) " << std::endl;
         std::cout << "9) What is playing now? " << std::endl;
-
         std::cout << "10) Show my chart " << std::endl;
-
         std::cout << "11) Sort by popularity " << std::endl;
-
-                std::cout << "12) Show the most popular band " << std::endl;
-
+        std::cout << "12) Show the most popular band " << std::endl;
         std::cout << "13) Exit " << std::endl;
 
         std::cin >> vybor;
@@ -194,7 +182,7 @@ int main () {
                               massivGrupp[nomerTeckusheyPensy + 1] << " - " << array_of_songs[nomerTeckusheyPensy + 1] << std::endl;
                 }
                 break;
-//            }
+            }
 
             case 4: {
                 const char* nazvanieTekusheyPesny = array_of_songs[nomerTeckusheyPensy];
@@ -207,7 +195,7 @@ int main () {
                     int popularnostVremennoyPesny = popularnost_pesen[i];
 
                     int j = i-1;
-                    while (j >-1 && std::strcmp(vremenoeNazvanyePesny,massiv_pesen[j])!=0){
+                    while (j >-1 && std::strcmp(vremenoeNazvanyePesny,array_of_songs[j])!=0){
                         array_of_songs[j + 1] = array_of_songs[j];
                         massivGrupp[j + 1] = massivGrupp[j];
                         popularnost_pesen[j + 1] = popularnost_pesen[j];
