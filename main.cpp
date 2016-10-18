@@ -77,7 +77,7 @@ int main () {
 
     bool prodolgitRabotu = true;
 
-    while (prodolgitRabotu) { int vybor = -1;
+    while (prodolgitRabotu) { int choise = -1;
 
         std::cout << std::endl << "Now playing: " <<
                   massivGrupp[nomerTeckusheyPensy] << " - " << array_of_songs[nomerTeckusheyPensy] << std::endl;
@@ -107,11 +107,11 @@ int main () {
         std::cout << "12) Show the most popular band " << std::endl;
         std::cout << "13) Exit " << std::endl;
 
-        std::cin >> vybor;
+        std::cin >> choise;
 
         std::cin.ignore();
 
-        switch (vybor) {
+        switch (choise) {
             case 1: {
                 if (nomerTeckusheyPensy != realnoe_kolichestvo_pesen - 1) {
                     ++nomerTeckusheyPensy;
@@ -373,7 +373,7 @@ const char* vremenoeNazvanyePesny = pesny_VTope[i];
                 const char* currentBandName = massivGrupp[nomerTeckusheyPensy];
                 int currentSongPopularity = popularnost_pesen[nomerTeckusheyPensy];
 
-                for (int i = 1; i < realnoe_kolichestvo_pesen; ++i) { const char* vremenoeNazvanyePesny = massiv_pesen[i];
+                for (int i = 1; i < realnoe_kolichestvo_pesen; ++i) { const char* vremenoeNazvanyePesny = array_of_songs[i];
                     const char* vremenoeNazvanyeGruppy = massivGrupp[i];
                     int popularnostVremennoyPesny = popularnost_pesen[i];
 
