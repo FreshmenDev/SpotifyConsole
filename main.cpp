@@ -3,16 +3,18 @@
 
 const int AMOUNT_OF_SONGS = 20;
 
-struct Song
-{
-	char* track;
-	char* group;
+struct Song {
+	std::string track;
+	std::string group;
 	int popularity;
 }allSongs[AMOUNT_OF_SONGS];
 
-const char* topSongs[AMOUNT_OF_SONGS];
-const char* topGroups[AMOUNT_OF_SONGS];
-int popularityIndex[AMOUNT_OF_SONGS];
+struct Popular {
+	std::string topSongs;
+	std::string topGroups;
+	int popularityIndex;
+}topList[AMOUNT_OF_SONGS];
+
 bool change = false;
 bool print = false;
 
@@ -165,9 +167,9 @@ int main ()
 
             case 10: {
                 for (int i =0; i < amountOfAllSongs;++i) {
-                    topSongs[i] = allSongs[i].track;
-		    topGroups[i] = allSongs[i].group;
-		    popularityIndex[i] = allSongs[i].popularity;
+                    topList[i].topSongs = allSongs[i].track;
+		    topList[i].topGroups = allSongs[i].group;
+		    topList[i].popularityIndex = allSongs[i].popularity;
                 }
 
                 sortingStruct(numberOfTheCurrentSong, amountOfAllSongs, false, false, false, true);
@@ -175,7 +177,7 @@ int main ()
                 std::cout << "Chart: " << std::endl;
 
                 for(int i=0;i < amountOfAllSongs;++i){
-                    std::cout<< (i + 1) << ") "<< topGroups[i]<< " - "<< topSongs[i] << std::endl;
+                    std::cout<< (i + 1) << ") "<< topList[i].topGroups << " - " << topList[i].topSongs << std::endl;
                 }
 
                 break;
@@ -194,14 +196,14 @@ int main ()
 
             case 12: {
                 for (int i = 0; i < amountOfAllSongs; ++i) {
-				topSongs[i] = allSongs[i].track;
-				topGroups[i] = allSongs[i].group;
-				popularityIndex[i] = allSongs[i].popularity;
+				topList[i].topSongs = allSongs[i].track;
+				topList[i].topGroups = allSongs[i].group;
+				topList[i].popularityIndex = allSongs[i].popularity;
 			}
 		
 		sortingStruct(numberOfTheCurrentSong, amountOfAllSongs, false, false, false, true);
 
-                    std::cout << "Most popular band is: " << topGroups[0] << std::endl;
+                    std::cout << "Most popular band is: " << topList[0].topGroups << std::endl;
                 break;
             }
 
@@ -242,18 +244,18 @@ void printNewPlaylistOrder(int all) {
 }
 
 void sortingStruct(int currSong, int all, bool chng, bool prnt, bool inCase3411, bool inCase1012) {
-		const char* TMP = allSongs[currSong].track;
-		const char* TMP2 = allSongs[currSong].group;
+		std::string TMP = allSongs[currSong].track;
+		std::string TMP2 = allSongs[currSong].group;
 		int currentPopulatiry = allSongs[currSong].popularity;
 
 	if (inCase3411) {
 		for (int i = 1; i < all; ++i) {
-			const char* tmp = allSongs[i].track;
-			const char* temp = allSongs[i].group;
+			const std::string tmp = allSongs[i].track;
+			const std::string temp = allSongs[i].group;
 			int variable = allSongs[i].popularity;
 
 			int j = i - 1;
-			while (j > -1 && std::strcmp(temp, allSongs[j].group) != 0) {
+			while (j > -1 && std::strcmp(temp.c_str(), allSongs[j].group.c_str()) != 0) {
 				allSongs[j + 1].track = allSongs[j].track;
 				allSongs[j + 1].group = allSongs[j].group;
 				allSongs[j + 1].popularity = allSongs[j].popularity;
@@ -266,21 +268,21 @@ void sortingStruct(int currSong, int all, bool chng, bool prnt, bool inCase3411,
 	}
 	if (inCase1012) {
 		for (int i = 1; i < all; ++i) {
-			const char* vremenoeNazvanyePesny = topSongs[i];
-			const char* vremenoeNazvanyeGruppy = topGroups[i];
-			int popularnostVremennoyPesny = popularityIndex[i];
+			const std::string vremenoeNazvanyePesny = topList[i].topSongs;
+			const std::string vremenoeNazvanyeGruppy = topList[i].topGroups;
+			int popularnostVremennoyPesny = topList[i].popularityIndex;
 
 			int j = i - 1;
-			while (j > -1 && popularityIndex[j] < popularnostVremennoyPesny) {
-				topSongs[j + 1] = topSongs[j];
-				topGroups[j + 1] = topGroups[j];
-				popularityIndex[j + 1] = popularityIndex[j];
+			while (j > -1 && topList[j].popularityIndex < popularnostVremennoyPesny) {
+				topList[j + 1].topSongs = topList[j].topSongs;
+				topList[j + 1].topGroups = topList[j].topGroups;
+				topList[j + 1].popularityIndex = topList[j].popularityIndex;
 					--j;
 				}
 
-				topSongs[j + 1] = vremenoeNazvanyePesny;
-				topGroups[j + 1] = vremenoeNazvanyeGruppy;
-				popularityIndex[j + 1] = popularnostVremennoyPesny;
+				topList[j + 1].topSongs = vremenoeNazvanyePesny;
+				topList[j + 1].topGroups = vremenoeNazvanyeGruppy;
+				topList[j + 1].popularityIndex = popularnostVremennoyPesny;
 				}
 			}
 	}
@@ -291,8 +293,8 @@ void sortingStruct(int currSong, int all, bool chng, bool prnt, bool inCase3411,
 
 	if (chng) {
 		for (int i = 0; i < all; ++i) {
-			if (std::strcmp(TMP2, allSongs[i].group) == 0
-				&& std::strcmp(TMP, allSongs[i].track) == 0) {
+			if (std::strcmp(TMP2.c_str(), allSongs[i].group.c_str()) == 0
+				&& std::strcmp(TMP.c_str(), allSongs[i].track.c_str()) == 0) {
 				currSong = i;
 				break;
 			}
@@ -310,7 +312,7 @@ void searchingSong(int all, std::string st, bool inCase5, bool inCase6) {
 	bool found = false;
 	if (inCase5) {
 		for (int i = 0; i < all; ++i) {
-			if (std::strcmp(str2.c_str(), allSongs[i].group) == 0) {
+			if (std::strcmp(str2.c_str(), allSongs[i].group.c_str()) == 0) {
 				std::cout << i + 1 << ") " << allSongs[i].group << " - " << allSongs[i].track << std::endl;
 				found = true;
 			}
@@ -318,7 +320,7 @@ void searchingSong(int all, std::string st, bool inCase5, bool inCase6) {
 	}
 	if (inCase6) {
 		for (int i = 0; i < all; ++i) {
-			if (std::strcmp(str2.c_str(), allSongs[i].track) == 0) {
+			if (std::strcmp(str2.c_str(), allSongs[i].track.c_str()) == 0) {
 				std::cout << i + 1 << ") " << allSongs[i].group << " - " << allSongs[i].track << std::endl;
 				found = true;
 			}
