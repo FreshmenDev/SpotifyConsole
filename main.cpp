@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
 
 int main () {
     const int COUNT_SONGS = 20;
@@ -79,49 +80,35 @@ int main () {
 
     while (workDuration) { int selection = -1;
 
-        std::cout << std::endl << "Now playing: " <<
-                  Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << std::endl;
+        cout << endl << "Now playing: " <<
+                  Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << endl;
 
-        if (numCurrentSong > 0) {std::cout << "Previous song: " <<
-                        Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << std::endl;
+        if (numCurrentSong > 0) {cout << "Previous song: " << Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << endl;
         }
 
         if (numCurrentSong <realCoutSongs - 1) {
-            std::cout << "Next song: " <<
-                          Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << std::endl;
+            cout << "Next song: " << Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << endl;
         }
 
 
-        std::cout << "Enter action you want to make: " << std::endl;
+        cout << "Enter action you want to make: " << endl;
+        cout << "1) Play next" << endl;
+        cout << "2) Play prev" << endl;
+        cout << "3) Group by band" << endl;
+        cout << "4) Group by song name" << endl;
+        cout << "5) Search song by band " << endl;
+        cout << "6) Search song by name " << endl;
+        cout << "7) Show playlist " << endl;
+        cout << "8) Play specific song (specified by position) " << endl;
+        cout << "9) What is playing now? " << endl;
+        cout << "10) Show my chart " << endl;
+        cout << "11) Sort by popularity " << endl;
+        cout << "12) Show the most popular band " << endl;
+        cout << "13) Exit " << endl;
 
-        std::cout << "1) Play next" << std::endl;
+        cin >> selection;
 
-        std::cout << "2) Play prev" << std::endl;
-
-        std::cout << "3) Group by band" << std::endl;
-
-                            std::cout << "4) Group by song name" << std::endl;
-
-           std::cout << "5) Search song by band " << std::endl;
-
-                            std::cout << "6) Search song by name " << std::endl;
-            std::cout << "7) Show playlist " << std::endl;
-
-                            std::cout << "8) Play specific song (specified by position) " << std::endl;
-
-        std::cout << "9) What is playing now? " << std::endl;
-
-        std::cout << "10) Show my chart " << std::endl;
-
-        std::cout << "11) Sort by popularity " << std::endl;
-
-                std::cout << "12) Show the most popular band " << std::endl;
-
-        std::cout << "13) Exit " << std::endl;
-
-        std::cin >> selection;
-
-        std::cin.ignore();
+        cin.ignore();
 
         switch (selection) {
             case 1: {
@@ -153,7 +140,7 @@ int main () {
                     int variable = popSongs[i];
 
                     int j = i-1;
-                    while (j> -1 && std::strcmp(temp, Groups[j]) != 0) {
+                    while (j> -1 && strcmp(temp, Groups[j]) != 0) {
                         Songs[j + 1] = Songs[j];
                         Groups[j +1] = Groups[j];
                         popSongs[j+1] = popSongs[j];
@@ -165,49 +152,46 @@ int main () {
                     popSongs[j + 1] = variable;
                 }
 
-                std::cout << "New playlist order " << std::endl;
+                cout << "New playlist order " << endl;
 
                 for (int i = 0; i < realCoutSongs; ++i) {
-                    std::cout << Groups[i] << " - " << Songs[i] << std::endl;
+                    cout << Groups[i] << " - " << Songs[i] << endl;
                 }
 
                 for (int i = 0; i < realCoutSongs; ++i) {
-                    if (std::strcmp(TMP2, Groups[i]) == 0
-                        && std::strcmp(TMP, Songs[i]) == 0) {
+                    if (strcmp(TMP2, Groups[i]) == 0
+                        && strcmp(TMP, Songs[i]) == 0) {
                         numCurrentSong = i;
                         break;
                     }
                 }
 
-                std::cout << "Current song position: " << numCurrentSong + 1 << std::endl;
+                cout << "Current song position: " << numCurrentSong + 1 << endl;
 
-                std::cout << "Now playing: " <<
-                          Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << std::endl;
+                cout << "Now playing: " << Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << endl;
 
                 if (numCurrentSong > 0) {
-                    std::cout << "Previous song: " <<
-                              Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << std::endl;
+                    cout << "Previous song: " << Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << endl;
                 }
 
                 if (numCurrentSong < realCoutSongs - 1) {
-                    std::cout << "Next song: " <<
-                              Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << std::endl;
+                    cout << "Next song: " << Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << endl;
                 }
                 break;
             }
 
             case 4: {
-                const char* name_Current_Song = Songs[numCurrentSong];
-                const char* name_Current_Group = Groups[numCurrentSong];
-                int pop_current_Group = popSongs[numCurrentSong];
+                const char* nameCurrentSongs = Songs[numCurrentSong];
+                const char* nameCurrentGroups = Groups[numCurrentSong];
+                int popCurrentGroups = popSongs[numCurrentSong];
 
-                for (int i = 1; i<realCoutSongs; ++i) {
+                for (int i = 1; i < realCoutSongs; ++i) {
                     const char* tempNamesSongs = Songs[i];
                     const char* tempNamesGroups = Groups[i];
                     int tempPopSongs = popSongs[i];
 
                     int j = i-1;
-                    while (j >-1 && std::strcmp(tempNamesSongs,Songs[j])!=0){
+                    while (j >-1 && strcmp(tempNamesSongs,Songs[j])!=0){
                         Songs[j + 1] = Songs[j];
                         Groups[j + 1] = Groups[j];
                         popSongs[j + 1] = popSongs[j];
@@ -219,105 +203,102 @@ int main () {
                     popSongs[j + 1] = tempPopSongs;
                 }
 
-                std::cout << "New playlist order " << std::endl;
+                cout << "New playlist order " << endl;
 
-                for (int i = 0; i<realCoutSongs; ++i)
+                for (int i = 0; i < realCoutSongs; ++i)
                 {
-                    std::cout << Groups[i] <<" - " << Songs[i] << std::endl;
+                    cout << Groups[i] << " - " << Songs[i] << endl;
                 }
 
                 for (int i = 0; i < realCoutSongs; ++i){
-                    if (std::strcmp(name_Current_Group, Groups[i]) == 0
-                        && std::strcmp(name_Current_Song, Songs[i]) == 0) {
+                    if (strcmp(nameCurrentGroups, Groups[i]) == 0
+                        && strcmp(nameCurrentSongs, Songs[i]) == 0) {
                         numCurrentSong = i;
                         break;
                     }}
 
-                std::cout<<"Current song position: "<<numCurrentSong<< std::endl;
+                cout << "Current song position: " << numCurrentSong << endl;
 
-                std::cout<<"Now playing: " <<
-                          Groups[numCurrentSong]<<" - "<< Songs[numCurrentSong] << std::endl;
+                cout << "Now playing: " << Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << endl;
 
                 if (numCurrentSong > 0) {
-                    std::cout << "Previous song: " <<
-                              Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << std::endl;
+                    cout << "Previous song: " << Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << endl;
                 }
 
                 if (numCurrentSong < realCoutSongs - 1) {
-                    std::cout << "Next song: " <<
-                              Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << std::endl;
+                    cout << "Next song: " << Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << endl;
                 }
                 break;
             }
 
             case 5: {
-                std::string str;
-                std::cout << "Input band name you are looking for: " << std::endl;
-                std::getline(std::cin, str);
+                string str;
+                cout << "Input band name you are looking for: " << endl;
+                getline(cin, str);
                 bool found=false;
                 for (int i=0; i<realCoutSongs; ++i) {
-                    if (std::strcmp(str.c_str(), Groups[i]) == 0) {
-                        std::cout << i + 1 << ") " << Groups[i] << " - " << Songs[i] << std::endl;
+                    if (strcmp(str.c_str(), Groups[i]) == 0) {
+                        cout << i + 1 << ") " << Groups[i] << " - " << Songs[i] << endl;
                         found = true;
                     }
                 }
 
                 if(found){
-                    std::cout << "Now you can play any song by it position" << std::endl;
+                    cout << "Now you can play any song by it position" << endl;
                 } else
                 {
-                    std::cout << "There are no pesny with band name like this " << str << std::endl;
+                    cout << "There are no pesny with band name like this " << str << endl;
                 }
 
                 break;
             }
 
             case 6: {
-                std::string str2;
-                std::cout << "Input song name you are looking for: " << std::endl;
-                std::getline(std::cin, str2);
+                string str2;
+                cout << "Input song name you are looking for: " << endl;
+                getline(cin, str2);
                 bool found = false;
                 for (int i = 0; i < realCoutSongs; ++i) {
-                    if (std::strcmp(str2.c_str(), Songs[i]) == 0) {
-                        std::cout << i + 1 << ") " << Groups[i] << " - " << Songs[i] << std::endl;
+                    if (strcmp(str2.c_str(), Songs[i]) == 0) {
+                        cout << i + 1 << ") " << Groups[i] << " - " << Songs[i] << endl;
                         found = true;
                     }
                 }
 
                 if (found)
                 {
-                    std::cout << "Now you can play any song by it position" << std::endl;
+                    cout << "Now you can play any song by it position" << endl;
                 }
 
                 else {
-                    std::cout << "There are no pesny with name like this " << str2 << std::endl;
+                    cout << "There are no pesny with name like this " << str2 << endl;
                 }
 
                 break;
             }
 
             case 7: {
-                std::cout << "Playlist: " << std::endl;
+                cout << "Playlist: " << endl;
                 for (int i = 0; i < realCoutSongs; ++i) {
-                    std::cout << Groups[i] << " - " << Songs[i] << std::endl;
+                    cout << Groups[i] << " - " << Songs[i] << endl;
                 }
                 break;
             }
 
             case 8: {
-                std::cout << "Ok, here is the playlist: " << std::endl;
+                cout << "Ok, here is the playlist: " << endl;
 
-                for (int i = 0; i < realCoutSongs; ++i){
-                    std::cout << i + 1 << ") " << Groups[i] << " - " << Songs[i] << std::endl;
+                for (int i = 0; i < realCoutSongs; ++i){ 
+                    cout << i + 1 << ") " << Groups[i] << " - " << Songs[i] << endl;
                 }
 
-                std::cout <<"Enter song position, you want to play: " << std::endl;
+                cout <<"Enter song position, you want to play: " << endl;
 
                 int numSongs;
 
-                std::cin >> numSongs;
+                cin >> numSongs;
 
-                std::cin.ignore();
+                cin.ignore();
 
                 --numSongs;
 
@@ -326,25 +307,21 @@ int main () {
                     ++popSongs[numCurrentSong];
                 }
 
-                std::cout << "Now playing: " <<
-                          Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << std::endl;
+                cout << "Now playing: " << Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << endl;
 
                 if (numCurrentSong > 0) {
-                    std::cout << "Previous song: " <<
-                              Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << std::endl;
+                    cout << "Previous song: " << Groups[numCurrentSong - 1] << " - " << Songs[numCurrentSong - 1] << endl;
                 }
 
                 if (numCurrentSong<realCoutSongs-1) {
-                    std::cout << "Next song: " <<
-                              Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << std::endl;
+                    cout << "Next song: " << Groups[numCurrentSong + 1] << " - " << Songs[numCurrentSong + 1] << endl;
                 }
 
                 break;
             }
 
             case 9: {
-                std::cout<< "Now playing: "<<
-                          Groups[numCurrentSong] <<" - " << Songs[numCurrentSong] << std::endl;
+                cout<< "Now playing: "<< Groups[numCurrentSong] <<" - " << Songs[numCurrentSong] << endl;
                 break;
             }
 
@@ -372,10 +349,10 @@ int main () {
                     popSongTop[j + 1] = tempPopSongs;
                 }
 
-                std::cout << "Chart: " << std::endl;
+                cout << "Chart: " << endl;
 
                 for(int i=0;i <realCoutSongs;++i){
-                    std::cout<< (i + 1) << ") "<< topGroups[i]<< " - "<< topSong[i] << std::endl;
+                    cout << (i + 1) << ") " << topGroups[i] << " - "<< topSong[i] << endl;
                 }
 
                 break;
@@ -398,28 +375,28 @@ int main () {
                     }
 
 
-                    Songs[j + 1] =tempNamesSongs;
+                    Songs[j + 1] = tempNamesSongs;
                     Groups[j + 1] = tempNamesGroups;
                     popSongs[j + 1] = tempPopSongs;
                 }
 
-                std::cout << "New playlist order " << std::endl;
+                cout << "New playlist order " << endl;
 
                 for (int i = 0; i < realCoutSongs; ++i) {
-                    std::cout << Groups[i] << " - " << Songs[i] << std::endl;
+                    cout << Groups[i] << " - " << Songs[i] << endl;
                 }
 
                 for (int i = 0; i < realCoutSongs; ++i)
                 {
-                    if (std::strcmp(currentBandName, Groups[i]) == 0
-                        && std::strcmp(currentSongName, Songs[i]) == 0) {
+                    if (strcmp(currentBandName, Groups[i]) == 0
+                        && strcmp(currentSongName, Songs[i]) == 0) {
                         numCurrentSong = i;
                         break; }
                 }
 
-                std::cout << "Now playing: " << Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << std::endl;
+                cout << "Now playing: " << Groups[numCurrentSong] << " - " << Songs[numCurrentSong] << endl;
 
-                std::cout << "Song, you are listening on " << numCurrentSong + 1 << " position of chart" << std::endl;
+                cout << "Song, you are listening on " << numCurrentSong + 1 << " position of chart" << endl;
                 break;
             }
 
@@ -451,7 +428,7 @@ int main () {
                     popSongTop[j + 1] = temp3;
                 }
 
-                    std::cout << "Most popular band is: " << topGroups[0] << std::endl;
+                    cout << "Most popular band is: " << topGroups[0] << endl;
                 break;
             }
 
@@ -461,9 +438,10 @@ int main () {
             }
 
             default:
-                std::cout << "Unknown command." << std::endl;
+                cout << "Unknown command." << endl;
         }
     }
 
-    std::cout << "Goodbye!" << std::endl;
+    cout << "Goodbye!" << endl;
+
 }
