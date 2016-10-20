@@ -8,13 +8,13 @@ struct Song {
 	std::string track;
 	std::string group;
 	int popularity;
-}allSongs[AMOUNT_OF_SONGS];
+} allSongs[AMOUNT_OF_SONGS];
 
 struct Popular {
 	std::string topSongs;
 	std::string topGroups;
 	int popularityIndex;
-}topList[AMOUNT_OF_SONGS];
+} topList[AMOUNT_OF_SONGS];
 
 bool needChange, needPrint, inSortCase, inShowCase, inBandNameCase, inSongNameCase;
 
@@ -48,12 +48,13 @@ int main () {
 
 	bool continueWork = true;
 
-    while (continueWork) { 
-	int selection = -1;
+    	while (continueWork) { 
+		int selection = -1;
 
-        printInformation(numberOfTheCurrentSong, amountOfAllSongs); // процедура вывода информации о текущей песне, следующей и предыдущей
+        	printInformation(numberOfTheCurrentSong, amountOfAllSongs); 
+		// процедура вывода информации о текущей песне, следующей и предыдущей
 
-        std::cout << "Enter action you want to make: \n" <<
+        	std::cout << "Enter action you want to make: \n" <<
 			"1) Play next\n" <<
 			"2) Play prev\n" <<
 			"3) Group by band\n" <<
@@ -68,13 +69,13 @@ int main () {
 			"12) Show the most popular band \n" <<
 			"13) Exit \n";
 
-        std::cin >> selection;
+        	std::cin >> selection;
 
-        std::cin.ignore();
+        	std::cin.ignore();
 
-        switch (selection) {
+            switch (selection) {
             case 1: {
-                if (numberOfTheCurrentSong != amountOfAllSongs - 1) {
+               	 if (numberOfTheCurrentSong != amountOfAllSongs - 1) {
                     ++numberOfTheCurrentSong;
                     ++allSongs[numberOfTheCurrentSong].popularity; 
 		}
@@ -90,8 +91,10 @@ int main () {
             }
 
             case 3: {
-                needChange = true; needPrint = true; inSortCase = true; inShowCase = false; // нужно ли менять номер текущего трека, выводить информацию, мы находимся в Case3,4,11 или 10, 12
-		sortingStruct(numberOfTheCurrentSong, amountOfAllSongs, needChange, needPrint, inSortCase, inShowCase); // вызываю процедуру для сортировки песен, групп и популярностей песен
+                needChange = true; needPrint = true; inSortCase = true; inShowCase = false;
+		// нужно ли менять номер текущего трека, выводить информацию, мы находимся в Case3,4,11 или 10, 12
+		sortingStruct(numberOfTheCurrentSong, amountOfAllSongs, needChange, needPrint, inSortCase, inShowCase);
+		// вызываю процедуру для сортировки песен, групп и популярностей песен
 
                 std::cout << "Current song position: " << numberOfTheCurrentSong + 1 << std::endl;
 
@@ -195,7 +198,7 @@ int main () {
 		
 		sortingStruct(numberOfTheCurrentSong, amountOfAllSongs, needChange, needPrint, inSortCase, inShowCase);
 
-                    std::cout << "Most popular band is: " << topList[0].topGroups << std::endl;
+                std::cout << "Most popular band is: " << topList[0].topGroups << std::endl;
                 break;
             }
 
