@@ -75,9 +75,9 @@ int main () {
 
     real = 14;
 
-    bool prodolgitRabotu = true;
+    bool continue_work = true;
 
-    while (prodolgitRabotu) { int choise = -1;
+    while (continue_work) { int choise = -1;
 
         std::cout << std::endl << "Now playing: " <<
         array_group[number_current_song] << " - " << array_songs[number_current_song] << std::endl;
@@ -129,7 +129,7 @@ int main () {
             case 3: {
                 const char* TMP = array_songs[number_current_song];
                 const char* TMP2 = array_group[number_current_song];
-                int tekushayPopularnost = popular_songs[number_current_song];
+                int popular_now = popular_songs[number_current_song]; // текуща€ попул€рность
 				
                 for (int i = 1; i < real; ++i)
                 {
@@ -302,7 +302,7 @@ int main () {
 
                 --songNomer;
 
-                if (songNomer > -1 && songNomer<realnoe_kolichestvo_pesen) {
+                if (songNomer > -1 && songNomer<real) {
                     number_current_song = songNomer;
                     ++popular_songs[number_current_song];
                 }
@@ -378,7 +378,6 @@ int main () {
                       --j;
                     }
 
-
                     array_songs[j + 1] = vremenoeNazvanyePesny;
                     array_group[j + 1] = vremenoeNazvanyeGruppy;
                     popular_songs[j + 1] = popularnostVremennoyPesny;
@@ -433,7 +432,7 @@ int main () {
             }
 
             case 13: {
-                prodolgitRabotu = false;
+                continue_work = false;
                 break;
             }
 
