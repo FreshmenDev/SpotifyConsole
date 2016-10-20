@@ -179,9 +179,9 @@ int main () {
             }
 
             case 4: {
-                const char* nazvanieTekusheyPesny = array_songs[number_current_song];
-                const char* nazvanieTekusheyGruppy = array_group[number_current_song];
-                int popularnost_tekushey_Gruppy = popular_songs[number_current_song];
+                const char* song_now = array_songs[number_current_song]; // название текущей песни
+                const char* group_now = array_group[number_current_song]; // название текущей группы
+                int popular_group_now = popular_songs[number_current_song]; //попул€рность текущей группы
 
                 for (int i = 1; i<real; ++i) {
                     const char* vremenoeNazvanyePesny = array_songs[i];
@@ -209,8 +209,8 @@ int main () {
                 }
 
                 for (int i = 0; i < real; ++i){
-                    if (std::strcmp(nazvanieTekusheyGruppy, array_group[i]) == 0
-                        && std::strcmp(nazvanieTekusheyPesny, array_songs[i]) == 0) {
+                    if (std::strcmp(group_now, array_group[i]) == 0
+                        && std::strcmp(song_now, array_songs[i]) == 0) {
                         number_current_song = i;
                         break;
                     }}
@@ -338,7 +338,8 @@ int main () {
 
                 for (int i = 1;i< real;++i) {
 					const char* vremenoeNazvanyePesny = top_songs[i];
-					const char* vremenoeNazvanyeGruppy = top_group[i];int popularnostVremennoyPesny = top_popular_songs[i];
+					const char* vremenoeNazvanyeGruppy = top_group[i];
+					int popularnostVremennoyPesny = top_popular_songs[i];
 
                     int j = i - 1;
                     while (j > -1 && top_popular_songs[j] < popularnostVremennoyPesny) {
