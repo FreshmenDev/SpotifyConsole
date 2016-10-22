@@ -62,7 +62,7 @@ void intMoveUpByOne(int &j, int temporarySongPopularity, int *targetName[], Song
 }
 
 // how to declare an array of size N inside a function when N is a parameter of that function?
-void sortSongs(const int numberOfsongs, SongManagement table[], int action)
+void sortSongs(const int NUMBER_OF_SONGS, SongManagement table[], int action)
 {
     /*
 
@@ -70,17 +70,16 @@ void sortSongs(const int numberOfsongs, SongManagement table[], int action)
     name (action == 2) or popularity (action == 3)
 
     */
-
-
+    
     // declaring arrays of pointers, which will respectively point to 
     // each element of type SongManagement arrays counterparts 
     // (track, band, popularity)
-    const char **targetBandName[20];
-    const char **targetSongName[20];
-    int *targetPopularity[20];
+    const char **targetBandName[14];
+    const char **targetSongName[14];
+    int *targetPopularity[14];
 
     // assigning addresses to the pointer arrays
-    for (int k = 0; (k < numberOfsongs); ++k)
+    for (int k = 0; (k < NUMBER_OF_SONGS); ++k)
     {
         targetBandName[k] = &(table[k].band);
         targetSongName[k] = &(table[k].track);
@@ -88,7 +87,7 @@ void sortSongs(const int numberOfsongs, SongManagement table[], int action)
     }
 
 
-    for (int i = 1; i < numberOfsongs; ++i)
+    for (int i = 1; i < NUMBER_OF_SONGS; ++i)
     {
         const char *temporarySongName = table[i].track;
         const char *temporaryBandName = table[i].band;
@@ -128,19 +127,19 @@ void sortSongs(const int numberOfsongs, SongManagement table[], int action)
     }
 }
 
-void sortTopSongs(const int numberOfSongs, SongManagement table[])
+void sortTopSongs(const int NUMBER_OF_SONGS, SongManagement table[])
 {
 
 	/**Calculates and sorts the top songs by popularity*/
 	
-    for (int i = 0; i < numberOfSongs; ++i)
+    for (int i = 0; i < NUMBER_OF_SONGS; ++i)
     {
         table[i].topSongs = table[i].track;
         table[i].topBands = table[i].band;
         table[i].topSongPopularity = table[i].popularity; 
     }
 	
-	for (int i = 1; i < numberOfSongs; ++i)
+	for (int i = 1; i < NUMBER_OF_SONGS; ++i)
     {
         const char* temporarySongName = table[i].topSongs; 
         const char* temporaryBandName = table[i].topBands;
@@ -161,7 +160,7 @@ void sortTopSongs(const int numberOfSongs, SongManagement table[])
     }
 }
 
-void printOrder(const int numberOfsongs, SongManagement table[], int action) 
+void printOrder(const int NUMBER_OF_SONGS, SongManagement table[], int action) 
     {
         /*
 
@@ -173,14 +172,14 @@ void printOrder(const int numberOfsongs, SongManagement table[], int action)
 
         if (action == 1)
         {
-            for (int i = 0; i < numberOfsongs; ++i) 
+            for (int i = 0; i < NUMBER_OF_SONGS; ++i) 
             {
                 cout << i + 1 << ") " << table[i].band << " - " << table[i].track << endl;
             }
         }
         else if (action == 2)
         {
-            for (int i = 0; i < numberOfsongs; ++i)
+            for (int i = 0; i < NUMBER_OF_SONGS; ++i)
             {
                 cout << i + 1 << ") " << table[i].topBands << " - " << table[i].topSongs << endl;
             }
@@ -212,7 +211,7 @@ void menu()
     cout << "13) Exit " << endl;
 }
 
-void printCurrentSongDetails(const int numberOfsongs, SongManagement table[], int currentSongNumber)
+void printCurrentSongDetails(const int NUMBER_OF_SONGS, SongManagement table[], int currentSongNumber)
 {
     /*
 
@@ -230,14 +229,14 @@ void printCurrentSongDetails(const int numberOfsongs, SongManagement table[], in
         table[currentSongNumber - 1].band << " - " << table[currentSongNumber - 1].track << '\n' << endl;
     }
 
-    if (currentSongNumber < numberOfsongs - 1) 
+    if (currentSongNumber < NUMBER_OF_SONGS - 1) 
     {
         cout << "Next song: " <<
         table[currentSongNumber + 1].band << " - " << table[currentSongNumber + 1].track << '\n' << endl;
     }
 }
 
-int currentSongPosition(const int numberOfsongs, SongManagement table[], const char *currentSongName, const char *currentGroupName)
+int currentSongPosition(const int NUMBER_OF_SONGS, SongManagement table[], const char *currentSongName, const char *currentGroupName)
 {
     /*
 
@@ -248,7 +247,7 @@ int currentSongPosition(const int numberOfsongs, SongManagement table[], const c
 
     int currentSongNumber;
 
-    for (int i = 0; i < numberOfsongs; ++i) 
+    for (int i = 0; i < NUMBER_OF_SONGS; ++i) 
     {
         if (std::strcmp(currentGroupName, table[i].band) == 0
                 && std::strcmp(currentSongName, table[i].track) == 0) 
@@ -261,7 +260,7 @@ int currentSongPosition(const int numberOfsongs, SongManagement table[], const c
         return currentSongNumber;
 }
 
-void search(std::string searchName, const int numberOfsongs, SongManagement table[], const char **targetName[], bool found)
+void search(std::string searchName, const int NUMBER_OF_SONGS, SongManagement table[], const char **targetName[], bool found)
 {
     /*
 
@@ -273,7 +272,7 @@ void search(std::string searchName, const int numberOfsongs, SongManagement tabl
 
     */
 
-    for (int i = 0; i < numberOfsongs; ++i) 
+    for (int i = 0; i < NUMBER_OF_SONGS; ++i) 
     {
         if (std::strcmp(searchName.c_str(), *targetName[i]) == 0)
         {
@@ -294,11 +293,10 @@ void search(std::string searchName, const int numberOfsongs, SongManagement tabl
 
 int main () 
 {
-    const int MAX_SONGS_NUMBER = 20;
-    const int numberOfsongs = 14;
+    const int NUMBER_OF_SONGS = 14;
     int currentSongNumber = 0;
 	
-	SongManagement songArray[MAX_SONGS_NUMBER] = {
+	SongManagement songArray[NUMBER_OF_SONGS] = {
 
 		{"Should I Stay or Should I Go"  , "The Clash"       , 0},
 		{"Baby don't lie to me"          , "The Fratellis"   , 0},
@@ -323,18 +321,17 @@ int main ()
     { 
         int selection = -1;
 
-        printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
+        printCurrentSongDetails(NUMBER_OF_SONGS, songArray, currentSongNumber);
         menu();
 
         cin >> selection;
-
         cin.ignore();
 
         switch (selection) 
         {
             case 1: 
             {
-                if (currentSongNumber != numberOfsongs - 1) 
+                if (currentSongNumber != NUMBER_OF_SONGS - 1) 
                 {
                     ++currentSongNumber;
                     ++songArray[currentSongNumber].popularity; 
@@ -356,16 +353,16 @@ int main ()
                 const char* currentGroupName = songArray[currentSongNumber].band;
                 int currentPopularity = songArray[currentSongNumber].popularity;
 
-                sortSongs(numberOfsongs, songArray, 1);
+                sortSongs(NUMBER_OF_SONGS, songArray, 1);
 
                 cout << "New playlist order:\n " << endl;
-                printOrder(numberOfsongs, songArray, 1);
+                printOrder(NUMBER_OF_SONGS, songArray, 1);
 
-                currentSongNumber = currentSongPosition(numberOfsongs, songArray, currentSongName, currentGroupName);
+                currentSongNumber = currentSongPosition(NUMBER_OF_SONGS, songArray, currentSongName, currentGroupName);
               
                 cout << "\nCurrent song position: " << currentSongNumber + 1 << endl;
 
-                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
+                printCurrentSongDetails(NUMBER_OF_SONGS, songArray, currentSongNumber);
 
                 break;
             }
@@ -375,16 +372,16 @@ int main ()
                 const char* currentGroupName = songArray[currentSongNumber].band;
                 int currentPopularity = songArray[currentSongNumber].popularity;
 
-                sortSongs(numberOfsongs, songArray, 2);
+                sortSongs(NUMBER_OF_SONGS, songArray, 2);
 
                 cout << "New playlist order:\n " << endl;
-                printOrder(numberOfsongs, songArray, 1);
+                printOrder(NUMBER_OF_SONGS, songArray, 1);
 
-                currentSongNumber = currentSongPosition(numberOfsongs, songArray, currentSongName, currentGroupName);
+                currentSongNumber = currentSongPosition(NUMBER_OF_SONGS, songArray, currentSongName, currentGroupName);
 
                 cout << "\nCurrent song position: " << currentSongNumber << endl;
 
-                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
+                printCurrentSongDetails(NUMBER_OF_SONGS, songArray, currentSongNumber);
 
                 break;
             }
@@ -397,16 +394,16 @@ int main ()
 
                 // declaring an array of pointers, which will respectively point to 
                 // each element of the existing bands array of type SongManagement
-                const char **comparingTargetName[MAX_SONGS_NUMBER];
+                const char **comparingTargetName[NUMBER_OF_SONGS];
 
 
                 // assigning addresses to the pointer array
-                for (int i = 0; i < numberOfsongs; ++i)
+                for (int i = 0; i < NUMBER_OF_SONGS; ++i)
                 {
                     comparingTargetName[i] = &(songArray[i].band);
                 }
 
-				search(inputBandName, numberOfsongs, songArray, comparingTargetName, nashel);
+				search(inputBandName, NUMBER_OF_SONGS, songArray, comparingTargetName, nashel);
 
                 break;
             }
@@ -419,29 +416,29 @@ int main ()
 				
                 // declaring an array of pointers, which will respectively point to 
                 // each element of the existing song names array of type SongManagement
-                const char **comparingTargetName[MAX_SONGS_NUMBER];
+                const char **comparingTargetName[NUMBER_OF_SONGS];
 
 
                 // assigning addresses to the pointer array
-                for (int i = 0; i < numberOfsongs; ++i)
+                for (int i = 0; i < NUMBER_OF_SONGS; ++i)
                 {
                     comparingTargetName[i] = &(songArray[i].track);
                 }
 
-                search(inputSongName, numberOfsongs, songArray, comparingTargetName, nashel);
+                search(inputSongName, NUMBER_OF_SONGS, songArray, comparingTargetName, nashel);
 
                 break;
             }
             case 7: 
             {
                 cout << "Playlist:\n" << endl;
-                printOrder(numberOfsongs, songArray, 1);
+                printOrder(NUMBER_OF_SONGS, songArray, 1);
                 break;
             }
             case 8: 
             {
                 cout << "Playlist:\n" << endl;
-                printOrder(numberOfsongs, songArray, 1);
+                printOrder(NUMBER_OF_SONGS, songArray, 1);
 
                 cout << "Enter the number of the song you want to play: " << endl;
 
@@ -451,13 +448,13 @@ int main ()
                 cin.ignore();
                 --trackNumber;
 
-                if (trackNumber > -1 && trackNumber < numberOfsongs)
+                if (trackNumber > -1 && trackNumber < NUMBER_OF_SONGS)
                 {
                     currentSongNumber = trackNumber;
                     ++songArray[currentSongNumber].popularity;
                 }
 
-                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
+                printCurrentSongDetails(NUMBER_OF_SONGS, songArray, currentSongNumber);
 
                 break;
             }
@@ -469,10 +466,10 @@ int main ()
             }
             case 10: 
             {
-                sortTopSongs(numberOfsongs, songArray);
+                sortTopSongs(NUMBER_OF_SONGS, songArray);
 
                 cout << "Top Songs Chart:\n" << endl;
-                printOrder(numberOfsongs, songArray, 2);
+                printOrder(NUMBER_OF_SONGS, songArray, 2);
                 
                 break;
             }
@@ -482,22 +479,22 @@ int main ()
                 const char* currentGroupName = songArray[currentSongNumber].band;
                 int currentPopularity = songArray[currentSongNumber].popularity;
                                 
-                sortSongs(numberOfsongs, songArray, 3);
+                sortSongs(NUMBER_OF_SONGS, songArray, 3);
 
                 cout << "New playlist order:\n " << endl;
-                printOrder(numberOfsongs, songArray, 1);
+                printOrder(NUMBER_OF_SONGS, songArray, 1);
 
-                currentSongNumber = currentSongPosition(numberOfsongs, songArray, currentSongName, currentGroupName);
+                currentSongNumber = currentSongPosition(NUMBER_OF_SONGS, songArray, currentSongName, currentGroupName);
 
 				cout << "\nCurrent song position: " << currentSongNumber + 1 << endl;
 
-                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
+                printCurrentSongDetails(NUMBER_OF_SONGS, songArray, currentSongNumber);
 
                 break;
             }
             case 12:
             {
-                sortTopSongs(numberOfsongs, songArray);
+                sortTopSongs(NUMBER_OF_SONGS, songArray);
                 cout << "\nMost popular band is: " << songArray[0].topBands << endl;
                 break;
             }
