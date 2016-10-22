@@ -47,18 +47,18 @@ void intMoveUpByOne(int &j, int temporarySongPopularity, int *targetName[], Song
      SongManagement int array becomes equal to its temporary counterpart.
 
      temporarySongPopularity: number that shows the level of popularity
-     **targetName:            an array of pointers that should point to an int 
+     *targetName:            an array of pointers that should point to an int 
                               member array of type SongManagement
      &j: loop variable
 
     */
      while (j > -1 && table[j].popularity < temporarySongPopularity) 
-        {
-            table[j + 1].track = table[j].track;
-            table[j + 1].band = table[j].band;
-            table[j + 1].popularity = table[j].popularity;
-            --j;
-        }
+     {
+        table[j + 1].track = table[j].track;
+        table[j + 1].band = table[j].band;
+        table[j + 1].popularity = table[j].popularity;
+        --j;
+     }
 }
 
 // how to declare an array of size N inside a function when N is a parameter of that function?
