@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <iostream>
-#include <string>
+#include <cstring>
 
 // Переменные
 const int Number_of_songs_all = 20;
