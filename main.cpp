@@ -8,13 +8,13 @@ using std::endl;
 
 struct SongManagement
 {
-    const char *pesni;
-	const char *Gruppa;
-	int         popularnost;
+    const char *track;
+	const char *band;
+	int         popularity;
 
-    const char *pesny_VTope;
-    const char *gruppy_v_tope;
-    int popularnost_pesen_v_tope;
+    const char *topSongs;
+    const char *topBands;
+    int topSongPopularity;
 };
 
 void charMoveUpByOne(int &j, const char *temporaryName, const char **targetName[], SongManagement table[])
@@ -32,9 +32,9 @@ void charMoveUpByOne(int &j, const char *temporaryName, const char **targetName[
 
     while (j > -1 && std::strcmp(temporaryName, *targetName[j]) != 0)
     {
-        table[j + 1].pesni = table[j].pesni;
-        table[j + 1].Gruppa = table[j].Gruppa;
-        table[j + 1].popularnost = table[j].popularnost;
+        table[j + 1].track = table[j].track;
+        table[j + 1].band = table[j].band;
+        table[j + 1].popularity = table[j].popularity;
         --j;
     }
 }
@@ -52,16 +52,16 @@ void intMoveUpByOne(int &j, int temporarySongPopularity, int *targetName[], Song
      &j: loop variable
 
     */
-     while (j > -1 && table[j].popularnost < temporarySongPopularity) 
+     while (j > -1 && table[j].popularity < temporarySongPopularity) 
         {
-            table[j + 1].pesni = table[j].pesni;
-            table[j + 1].Gruppa = table[j].Gruppa;
-            table[j + 1].popularnost = table[j].popularnost;
+            table[j + 1].track = table[j].track;
+            table[j + 1].band = table[j].band;
+            table[j + 1].popularity = table[j].popularity;
             --j;
         }
 }
 
-// how to declare an array size N inside a function when N is a parameter of that function?
+// how to declare an array of size N inside a function when N is a parameter of that function?
 void sortSongs(const int numberOfsongs, SongManagement table[], int action)
 {
     /*
@@ -74,7 +74,7 @@ void sortSongs(const int numberOfsongs, SongManagement table[], int action)
 
     // declaring arrays of pointers, which will respectively point to 
     // each element of type SongManagement arrays counterparts 
-    // (pesni, Gruppa, popularnost)
+    // (track, band, popularity)
     const char **targetBandName[20];
     const char **targetSongName[20];
     int *targetPopularity[20];
@@ -82,17 +82,17 @@ void sortSongs(const int numberOfsongs, SongManagement table[], int action)
     // assigning addresses to the pointer arrays
     for (int k = 0; (k < numberOfsongs); ++k)
     {
-        targetBandName[k] = &(table[k].Gruppa);
-        targetSongName[k] = &(table[k].pesni);
-        targetPopularity[k] = &(table[k].popularnost);
+        targetBandName[k] = &(table[k].band);
+        targetSongName[k] = &(table[k].track);
+        targetPopularity[k] = &(table[k].popularity);
     }
 
 
     for (int i = 1; i < numberOfsongs; ++i)
     {
-        const char *temporarySongName = table[i].pesni;
-        const char *temporaryBandName = table[i].Gruppa;
-        int temporarySongPopularity = table[i].popularnost;
+        const char *temporarySongName = table[i].track;
+        const char *temporaryBandName = table[i].band;
+        int temporarySongPopularity = table[i].popularity;
         int j = i-1;
 
         //determining if it's a name or group sort
@@ -121,9 +121,9 @@ void sortSongs(const int numberOfsongs, SongManagement table[], int action)
             }
         }
 
-            table[j + 1].pesni = temporarySongName;
-            table[j + 1].Gruppa = temporaryBandName;
-            table[j + 1].popularnost = temporarySongPopularity;
+            table[j + 1].track = temporarySongName;
+            table[j + 1].band = temporaryBandName;
+            table[j + 1].popularity = temporarySongPopularity;
 
     }
 }
@@ -135,29 +135,29 @@ void sortTopSongs(const int numberOfSongs, SongManagement table[])
 	
     for (int i = 0; i < numberOfSongs; ++i)
     {
-        table[i].pesny_VTope = table[i].pesni;
-        table[i].gruppy_v_tope = table[i].Gruppa;
-        table[i].popularnost_pesen_v_tope = table[i].popularnost; 
+        table[i].topSongs = table[i].track;
+        table[i].topBands = table[i].band;
+        table[i].topSongPopularity = table[i].popularity; 
     }
 	
 	for (int i = 1; i < numberOfSongs; ++i)
     {
-        const char* temporarySongName = table[i].pesny_VTope; 
-        const char* temporaryBandName = table[i].gruppy_v_tope;
-        int temporarySongPopularity = table[i].popularnost_pesen_v_tope;
+        const char* temporarySongName = table[i].topSongs; 
+        const char* temporaryBandName = table[i].topBands;
+        int temporarySongPopularity = table[i].topSongPopularity;
         int j = i - 1;
 					
-        while (j > -1 && table[j].popularnost_pesen_v_tope < temporarySongPopularity)
+        while (j > -1 && table[j].topSongPopularity < temporarySongPopularity)
         {
-            table[j + 1].pesny_VTope = table[j].pesny_VTope;
-            table[j + 1].gruppy_v_tope = table[j].gruppy_v_tope;
-            table[j + 1].popularnost_pesen_v_tope = table[j].popularnost_pesen_v_tope;
+            table[j + 1].topSongs = table[j].topSongs;
+            table[j + 1].topBands = table[j].topBands;
+            table[j + 1].topSongPopularity = table[j].topSongPopularity;
             --j;
         }
 
-        table[j + 1].pesny_VTope = temporarySongName;
-        table[j + 1].gruppy_v_tope = temporaryBandName;
-        table[j + 1].popularnost_pesen_v_tope = temporarySongPopularity;
+        table[j + 1].topSongs = temporarySongName;
+        table[j + 1].topBands = temporaryBandName;
+        table[j + 1].topSongPopularity = temporarySongPopularity;
     }
 }
 
@@ -175,14 +175,14 @@ void printOrder(const int numberOfsongs, SongManagement table[], int action)
         {
             for (int i = 0; i < numberOfsongs; ++i) 
             {
-                cout << i + 1 << ") " << table[i].Gruppa << " - " << table[i].pesni << endl;
+                cout << i + 1 << ") " << table[i].band << " - " << table[i].track << endl;
             }
         }
         else if (action == 2)
         {
             for (int i = 0; i < numberOfsongs; ++i)
             {
-                cout << i + 1 << ") " << table[i].gruppy_v_tope << " - " << table[i].pesny_VTope << endl;
+                cout << i + 1 << ") " << table[i].topBands << " - " << table[i].topSongs << endl;
             }
         }
         else {
@@ -222,18 +222,18 @@ void printCurrentSongDetails(const int numberOfsongs, SongManagement table[], in
     */
 
     cout << endl << "Now playing: " <<
-        table[currentSongNumber].Gruppa << " - " << table[currentSongNumber].pesni << '\n' << endl;
+        table[currentSongNumber].band << " - " << table[currentSongNumber].track << '\n' << endl;
 
     if (currentSongNumber > 0) 
     {
         cout << "Previous song: " <<
-        table[currentSongNumber - 1].Gruppa << " - " << table[currentSongNumber - 1].pesni << '\n' << endl;
+        table[currentSongNumber - 1].band << " - " << table[currentSongNumber - 1].track << '\n' << endl;
     }
 
     if (currentSongNumber < numberOfsongs - 1) 
     {
         cout << "Next song: " <<
-        table[currentSongNumber + 1].Gruppa << " - " << table[currentSongNumber + 1].pesni << '\n' << endl;
+        table[currentSongNumber + 1].band << " - " << table[currentSongNumber + 1].track << '\n' << endl;
     }
 }
 
@@ -250,8 +250,8 @@ int currentSongPosition(const int numberOfsongs, SongManagement table[], const c
 
     for (int i = 0; i < numberOfsongs; ++i) 
     {
-        if (std::strcmp(currentGroupName, table[i].Gruppa) == 0
-                && std::strcmp(currentSongName, table[i].pesni) == 0) 
+        if (std::strcmp(currentGroupName, table[i].band) == 0
+                && std::strcmp(currentSongName, table[i].track) == 0) 
         {
             currentSongNumber = i;
             break;
@@ -277,7 +277,7 @@ void search(std::string searchName, const int numberOfsongs, SongManagement tabl
     {
         if (std::strcmp(searchName.c_str(), *targetName[i]) == 0)
         {
-            cout << i + 1 << ") " << *targetName[i] << " - " << table[i].pesni << endl;
+            cout << i + 1 << ") " << *targetName[i] << " - " << table[i].track << endl;
             found = true;
         }
     }
@@ -294,11 +294,11 @@ void search(std::string searchName, const int numberOfsongs, SongManagement tabl
 
 int main () 
 {
-    const int KOLICHESTVO_PESEN_VSEGO = 20; // maximum number of songs
-    const int realnoe_kolichestvo_pesen = 14; // numberOfsongs
-    int nomerTeckusheyPensy = 0; // currentSongNumber
+    const int MAX_SONGS_NUMBER = 20;
+    const int numberOfsongs = 14;
+    int currentSongNumber = 0;
 	
-	SongManagement Massiv[KOLICHESTVO_PESEN_VSEGO] = {
+	SongManagement songArray[MAX_SONGS_NUMBER] = {
 
 		{"Should I Stay or Should I Go"  , "The Clash"       , 0},
 		{"Baby don't lie to me"          , "The Fratellis"   , 0},
@@ -317,74 +317,74 @@ int main ()
 
 	};
 
-    bool prodolgitRabotu = true;
+    bool continueLoop = true;
 
-    while (prodolgitRabotu) 
+    while (continueLoop) 
     { 
-        int vybor = -1;
+        int selection = -1;
 
-        printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
+        printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
         menu();
 
-        cin >> vybor;
+        cin >> selection;
 
         cin.ignore();
 
-        switch (vybor) 
+        switch (selection) 
         {
             case 1: 
             {
-                if (nomerTeckusheyPensy != realnoe_kolichestvo_pesen - 1) 
+                if (currentSongNumber != numberOfsongs - 1) 
                 {
-                    ++nomerTeckusheyPensy;
-                    ++Massiv[nomerTeckusheyPensy].popularnost; 
+                    ++currentSongNumber;
+                    ++songArray[currentSongNumber].popularity; 
                 }
                 break;
             }
             case 2: 
             {
-                if (nomerTeckusheyPensy > 0)
+                if (currentSongNumber > 0)
                 {
-                    --nomerTeckusheyPensy;
-                    ++Massiv[nomerTeckusheyPensy].popularnost;
+                    --currentSongNumber;
+                    ++songArray[currentSongNumber].popularity;
                 }
                 break;
             }
             case 3: 
             {
-                const char* currentSongName = Massiv[nomerTeckusheyPensy].pesni;
-                const char* currentGroupName = Massiv[nomerTeckusheyPensy].Gruppa;
-                int currentPopularity = Massiv[nomerTeckusheyPensy].popularnost;
+                const char* currentSongName = songArray[currentSongNumber].track;
+                const char* currentGroupName = songArray[currentSongNumber].band;
+                int currentPopularity = songArray[currentSongNumber].popularity;
 
-                sortSongs(realnoe_kolichestvo_pesen, Massiv, 1);
+                sortSongs(numberOfsongs, songArray, 1);
 
                 cout << "New playlist order:\n " << endl;
-                printOrder(realnoe_kolichestvo_pesen, Massiv, 1);
+                printOrder(numberOfsongs, songArray, 1);
 
-                nomerTeckusheyPensy = currentSongPosition(realnoe_kolichestvo_pesen, Massiv, currentSongName, currentGroupName);
+                currentSongNumber = currentSongPosition(numberOfsongs, songArray, currentSongName, currentGroupName);
               
-                cout << "\nCurrent song position: " << nomerTeckusheyPensy + 1 << endl;
+                cout << "\nCurrent song position: " << currentSongNumber + 1 << endl;
 
-                printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
+                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
 
                 break;
             }
             case 4: 
             {
-                const char* currentSongName = Massiv[nomerTeckusheyPensy].pesni;
-                const char* currentGroupName = Massiv[nomerTeckusheyPensy].Gruppa;
-                int currentPopularity = Massiv[nomerTeckusheyPensy].popularnost;
+                const char* currentSongName = songArray[currentSongNumber].track;
+                const char* currentGroupName = songArray[currentSongNumber].band;
+                int currentPopularity = songArray[currentSongNumber].popularity;
 
-                sortSongs(realnoe_kolichestvo_pesen, Massiv, 2);
+                sortSongs(numberOfsongs, songArray, 2);
 
                 cout << "New playlist order:\n " << endl;
-                printOrder(realnoe_kolichestvo_pesen, Massiv, 1);
+                printOrder(numberOfsongs, songArray, 1);
 
-                nomerTeckusheyPensy = currentSongPosition(realnoe_kolichestvo_pesen, Massiv, currentSongName, currentGroupName);
+                currentSongNumber = currentSongPosition(numberOfsongs, songArray, currentSongName, currentGroupName);
 
-                cout << "\nCurrent song position: " << nomerTeckusheyPensy << endl;
+                cout << "\nCurrent song position: " << currentSongNumber << endl;
 
-                printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
+                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
 
                 break;
             }
@@ -397,16 +397,16 @@ int main ()
 
                 // declaring an array of pointers, which will respectively point to 
                 // each element of the existing bands array of type SongManagement
-                const char **comparingTargetName[KOLICHESTVO_PESEN_VSEGO];
+                const char **comparingTargetName[MAX_SONGS_NUMBER];
 
 
                 // assigning addresses to the pointer array
-                for (int i = 0; i < realnoe_kolichestvo_pesen; ++i)
+                for (int i = 0; i < numberOfsongs; ++i)
                 {
-                    comparingTargetName[i] = &(Massiv[i].Gruppa);
+                    comparingTargetName[i] = &(songArray[i].band);
                 }
 
-				search(inputBandName, realnoe_kolichestvo_pesen, Massiv, comparingTargetName, nashel);
+				search(inputBandName, numberOfsongs, songArray, comparingTargetName, nashel);
 
                 break;
             }
@@ -419,91 +419,91 @@ int main ()
 				
                 // declaring an array of pointers, which will respectively point to 
                 // each element of the existing song names array of type SongManagement
-                const char **comparingTargetName[KOLICHESTVO_PESEN_VSEGO];
+                const char **comparingTargetName[MAX_SONGS_NUMBER];
 
 
                 // assigning addresses to the pointer array
-                for (int i = 0; i < realnoe_kolichestvo_pesen; ++i)
+                for (int i = 0; i < numberOfsongs; ++i)
                 {
-                    comparingTargetName[i] = &(Massiv[i].pesni);
+                    comparingTargetName[i] = &(songArray[i].track);
                 }
 
-                search(inputSongName, realnoe_kolichestvo_pesen, Massiv, comparingTargetName, nashel);
+                search(inputSongName, numberOfsongs, songArray, comparingTargetName, nashel);
 
                 break;
             }
             case 7: 
             {
                 cout << "Playlist:\n" << endl;
-                printOrder(realnoe_kolichestvo_pesen, Massiv, 1);
+                printOrder(numberOfsongs, songArray, 1);
                 break;
             }
             case 8: 
             {
                 cout << "Playlist:\n" << endl;
-                printOrder(realnoe_kolichestvo_pesen, Massiv, 1);
+                printOrder(numberOfsongs, songArray, 1);
 
                 cout << "Enter the number of the song you want to play: " << endl;
 
-                int songNomer;
+                int trackNumber;
 
-                cin >> songNomer;
+                cin >> trackNumber;
                 cin.ignore();
-                --songNomer;
+                --trackNumber;
 
-                if (songNomer > -1 && songNomer < realnoe_kolichestvo_pesen)
+                if (trackNumber > -1 && trackNumber < numberOfsongs)
                 {
-                    nomerTeckusheyPensy = songNomer;
-                    ++Massiv[nomerTeckusheyPensy].popularnost;
+                    currentSongNumber = trackNumber;
+                    ++songArray[currentSongNumber].popularity;
                 }
 
-                printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
+                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
 
                 break;
             }
             case 9: 
             {
                 cout << "Now playing: " <<
-                    Massiv[nomerTeckusheyPensy].Gruppa << " - " << Massiv[nomerTeckusheyPensy].pesni << endl;
+                    songArray[currentSongNumber].band << " - " << songArray[currentSongNumber].track << endl;
                 break;
             }
             case 10: 
             {
-                sortTopSongs(realnoe_kolichestvo_pesen, Massiv);
+                sortTopSongs(numberOfsongs, songArray);
 
                 cout << "Top Songs Chart:\n" << endl;
-                printOrder(realnoe_kolichestvo_pesen, Massiv, 2);
+                printOrder(numberOfsongs, songArray, 2);
                 
                 break;
             }
             case 11: 
             {
-                const char* currentSongName = Massiv[nomerTeckusheyPensy].pesni;
-                const char* currentGroupName = Massiv[nomerTeckusheyPensy].Gruppa;
-                int currentPopularity = Massiv[nomerTeckusheyPensy].popularnost;
+                const char* currentSongName = songArray[currentSongNumber].track;
+                const char* currentGroupName = songArray[currentSongNumber].band;
+                int currentPopularity = songArray[currentSongNumber].popularity;
                                 
-                sortSongs(realnoe_kolichestvo_pesen, Massiv, 3);
+                sortSongs(numberOfsongs, songArray, 3);
 
                 cout << "New playlist order:\n " << endl;
-                printOrder(realnoe_kolichestvo_pesen, Massiv, 1);
+                printOrder(numberOfsongs, songArray, 1);
 
-                nomerTeckusheyPensy = currentSongPosition(realnoe_kolichestvo_pesen, Massiv, currentSongName, currentGroupName);
+                currentSongNumber = currentSongPosition(numberOfsongs, songArray, currentSongName, currentGroupName);
 
-				cout << "\nCurrent song position: " << nomerTeckusheyPensy + 1 << endl;
+				cout << "\nCurrent song position: " << currentSongNumber + 1 << endl;
 
-                printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
+                printCurrentSongDetails(numberOfsongs, songArray, currentSongNumber);
 
                 break;
             }
             case 12:
             {
-                sortTopSongs(realnoe_kolichestvo_pesen, Massiv);
-                cout << "\nMost popular band is: " << Massiv[0].gruppy_v_tope << endl;
+                sortTopSongs(numberOfsongs, songArray);
+                cout << "\nMost popular band is: " << songArray[0].topBands << endl;
                 break;
             }
             case 13: 
             {
-                prodolgitRabotu = false;
+                continueLoop = false;
                 break;
             }
             default:
