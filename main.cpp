@@ -16,10 +16,6 @@ struct SongManagement
 
 void sortSongs(int numberOfsongs, SongManagement table[], int action)
 {
-    // const char* temporarySongname = song;
-    // const char* temporaryGroupname = group;
-    //  int currentPopularity = popularity;
-
     /*
 
     *Sorts songs according to their group (action == 1), 
@@ -34,7 +30,7 @@ void sortSongs(int numberOfsongs, SongManagement table[], int action)
         int temporarySongPopularity = table[i].popularnost;
         int j = i-1;
 
-        //determining if it's a group, name or popularity sort
+        //determining if it's a name or group sort
         switch (action)
         {
             case 1:  // Group Sort
@@ -145,7 +141,7 @@ void printCurrentSongDetails(int numberOfsongs, SongManagement table[], int curr
     }
 }
 
-int currentSongPosition(int numberOfsongs, SongManagement table[], const char* currentSongName, const char* currentGroupName)
+int currentSongPosition(int numberOfsongs, SongManagement table[], const char *currentSongName, const char *currentGroupName)
 {
     /*
 
@@ -167,6 +163,38 @@ int currentSongPosition(int numberOfsongs, SongManagement table[], const char* c
     }
 
         return currentSongNumber;
+}
+
+
+void search(std::string searchName, int numberOfsongs, SongManagement table[], const char **targetName[], bool found)
+{
+    /*
+
+    *Searches for and displays any songs or group names in the database that match the provided input.
+
+    searchName:   string input of the user
+    **targetName: an array of pointers that should point to a member array of type SongManagement
+    found:        True if match is found, false otherwise
+
+    */
+
+    for (int i=0; i < numberOfsongs; ++i) 
+    {
+        if (std::strcmp(searchName.c_str(), *targetName[i]) == 0)
+        {
+            cout << i + 1 << ") " << *targetName[i] << " - " << table[i].pesni << endl;
+            found = true;
+        }
+    }
+
+    if (found)
+    {
+        cout << "Now you can play any song by it position" << endl;
+    } 
+    else {
+        cout << "Name \"" << searchName << "\" not found." << endl;
+        cout << "Please try again." << endl;
+    }
 }
 
 int main () 
@@ -192,8 +220,8 @@ int main ()
 
 	};
     
-    const char* pesny_VTope[KOLICHESTVO_PESEN_VSEGO];
-    const char* gruppy_v_tope[KOLICHESTVO_PESEN_VSEGO];
+    const char *pesny_VTope[KOLICHESTVO_PESEN_VSEGO];
+    const char *gruppy_v_tope[KOLICHESTVO_PESEN_VSEGO];
     int popularnost_pesen_v_tope[KOLICHESTVO_PESEN_VSEGO];
 
     int realnoe_kolichestvo_pesen = 0; // numberOfsongs
@@ -208,7 +236,6 @@ int main ()
         int vybor = -1;
 
         printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv,  nomerTeckusheyPensy);
-
         menu();
 
         cin >> vybor;
@@ -264,7 +291,7 @@ int main ()
                 printOrder(realnoe_kolichestvo_pesen, Massiv);
                 nomerTeckusheyPensy = currentSongPosition(realnoe_kolichestvo_pesen, Massiv, currentSongName, currentGroupName);
 
-                cout << "Current song position: " << nomerTeckusheyPensy << endl;
+                cout << "\nCurrent song position: " << nomerTeckusheyPensy << endl;
 
                 printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
 
@@ -273,55 +300,45 @@ int main ()
 
             case 5: 
             {
-                std::string str;
+                std::string inputBandName;
                 cout << "Input band name you are looking for: " << endl;
-                std::getline(cin, str);
+                std::getline(cin, inputBandName);
                 bool nashel = false;
-				
-                for (int i=0; i<realnoe_kolichestvo_pesen; ++i) 
+
+                // declaring an array of pointers, which will respectively point to 
+                // each element of the existing bands array of type SongManagement
+
+                const char **comparingTargetName[KOLICHESTVO_PESEN_VSEGO];
+
+                // assigning addresses to the pointer array
+                for (int i = 0; i < realnoe_kolichestvo_pesen; ++i)
                 {
-                    if (std::strcmp(str.c_str(), Massiv[i].Gruppa) == 0)
-                    {
-                        cout << i + 1 << ") " << Massiv[i].Gruppa << " - " << Massiv[i].pesni << endl;
-                        nashel = true;
-                    }
+                    comparingTargetName[i] = &(Massiv[i].Gruppa);
                 }
 
-                if (nashel)
-                {
-                    cout << "Now you can play any song by it position" << endl;
-                } 
-                else {
-                    cout << "There are no pesny with band name like this " << str << endl;
-                }
+				search(inputBandName, realnoe_kolichestvo_pesen, Massiv, comparingTargetName, nashel);
 
                 break;
             }
 
             case 6: 
             {
-                std::string str2;
+                std::string inputSongName;
                 cout << "Input song name you are looking for: " << endl;
-                std::getline(cin, str2);
+                std::getline(cin, inputSongName);
                 bool nashel = false;
 				
-                for (int i = 0; i < realnoe_kolichestvo_pesen; ++i) 
+                // declaring an array of pointers, which will respectively point to 
+                // each element of the existing song names array of type SongManagement
+                const char **comparingTargetName[KOLICHESTVO_PESEN_VSEGO];
+
+                // assigning addresses to the pointer array
+                for (int i = 0; i < realnoe_kolichestvo_pesen; ++i)
                 {
-                    if (std::strcmp(str2.c_str(), Massiv[i].pesni) == 0) 
-                    {
-                        cout << i + 1 << ") " << Massiv[i].Gruppa << " - " << Massiv[i].pesni << endl;
-                        nashel = true;
-                    }
+                    comparingTargetName[i] = &(Massiv[i].pesni);
                 }
 
-                if (nashel)
-                {
-                    cout << "Now you can play any song by it position" << endl;
-                }
-
-                else {
-                    cout << "There are no pesny with name like this " << str2 << endl;
-                }
+                search(inputSongName, realnoe_kolichestvo_pesen, Massiv, comparingTargetName, nashel);
 
                 break;
             }
@@ -355,7 +372,7 @@ int main ()
 
                 --songNomer;
 
-                if (songNomer > -1 && songNomer<realnoe_kolichestvo_pesen)
+                if (songNomer > -1 && songNomer < realnoe_kolichestvo_pesen)
                 {
                     nomerTeckusheyPensy = songNomer;
                     ++Massiv[nomerTeckusheyPensy].popularnost;
@@ -379,15 +396,13 @@ int main ()
                 break;
             }
 
-            case 9: 
-            {
+            case 9: {
                 cout<< "Now playing: "<<
                     Massiv[nomerTeckusheyPensy].Gruppa <<" - " <<Massiv[nomerTeckusheyPensy].pesni << endl;
                 break;
             }
 
-            case 10:
-            {
+            case 10: {
                 for (int i =0; i < realnoe_kolichestvo_pesen;++i) 
                 {
                     pesny_VTope[i]= Massiv[i].pesni;
@@ -397,6 +412,7 @@ int main ()
 
                 for (int i = 1;i< realnoe_kolichestvo_pesen;++i)
                 {
+					
                     const char* vremenoeNazvanyePesny = pesny_VTope[i];
                     const char* vremenoeNazvanyeGruppy = gruppy_v_tope[i];
 					int popularnostVremennoyPesny = popularnost_pesen_v_tope[i];
