@@ -1,6 +1,26 @@
 #include <iostream>
 #include <string>
 
+void funcOutInformation(int numberCurrentSong1)
+{
+	std::cout << "Current song position: " << numberCurrentSong1 << std::endl;
+
+	std::cout << "Now playing: " <<
+		arrayGroups[numberCurrentSong1] << " - " << arraySongs[numberCurrentSong1] << std::endl;
+
+	if (numberCurrentSong1 > 0)
+	{
+		std::cout << "Previous song: " <<
+			arrayGroups[numberCurrentSong1 - 1] << " - " << arraySongs[numberCurrentSong1 - 1] << std::endl;
+	}
+
+	if (numberCurrentSong1 < realNumberSongs - 1)
+	{
+		std::cout << "Next song: " <<
+			arrayGroups[numberCurrentSong1 + 1] << " - " << arraySongs[numberCurrentSong1 + 1] << std::endl;
+	}
+	break;
+}
 int main()
 {
 	const int TOTAL_NUMBER_OF_SONGS = 20;
@@ -112,6 +132,7 @@ int main()
 		std::cout << "5) Search song by band " << std::endl;
 
 		std::cout << "6) Search song by name " << std::endl;
+
 		std::cout << "7) Show playlist " << std::endl;
 
 		std::cout << "8) Play specific song (specified by position) " << std::endl;
@@ -196,23 +217,7 @@ int main()
 				}
 			}
 
-			std::cout << "Current song position: " << numberCurrentSong + 1 << std::endl;
-
-			std::cout << "Now playing: " <<
-				arrayGroups[numberCurrentSong] << " - " << arraySongs[numberCurrentSong] << std::endl;
-
-			if (numberCurrentSong > 0)
-			{
-				std::cout << "Previous song: " <<
-					arrayGroups[numberCurrentSong - 1] << " - " << arraySongs[numberCurrentSong - 1] << std::endl;
-			}
-
-			if (numberCurrentSong < realNumberSongs - 1)
-			{
-				std::cout << "Next song: " <<
-					arrayGroups[numberCurrentSong + 1] << " - " << arraySongs[numberCurrentSong + 1] << std::endl;
-			}
-			break;
+			funcOutInformation(numberCurrentSong);
 		}
 
 		case 4:
@@ -259,23 +264,7 @@ int main()
 				}
 			}
 
-			std::cout << "Current song position: " << numberCurrentSong << std::endl;
-
-			std::cout << "Now playing: " <<
-				arrayGroups[numberCurrentSong] << " - " << arraySongs[numberCurrentSong] << std::endl;
-
-			if (numberCurrentSong > 0)
-			{
-				std::cout << "Previous song: " <<
-					arrayGroups[numberCurrentSong - 1] << " - " << arraySongs[numberCurrentSong - 1] << std::endl;
-			}
-
-			if (numberCurrentSong < realNumberSongs - 1)
-			{
-				std::cout << "Next song: " <<
-					arrayGroups[numberCurrentSong + 1] << " - " << arraySongs[numberCurrentSong + 1] << std::endl;
-			}
-			break;
+			funcOutInformation(numberCurrentSong);
 		}
 
 		case 5:
@@ -368,22 +357,7 @@ int main()
 				++popularSongs[numberCurrentSong];
 			}
 
-			std::cout << "Now playing: " <<
-				arrayGroups[numberCurrentSong] << " - " << arraySongs[numberCurrentSong] << std::endl;
-
-			if (numberCurrentSong > 0)
-			{
-				std::cout << "Previous song: " <<
-					arrayGroups[numberCurrentSong - 1] << " - " << arraySongs[numberCurrentSong - 1] << std::endl;
-			}
-
-			if (numberCurrentSong < realNumberSongs - 1)
-			{
-				std::cout << "Next song: " <<
-					arrayGroups[numberCurrentSong + 1] << " - " << arraySongs[numberCurrentSong + 1] << std::endl;
-			}
-
-			break;
+			funcOutInformation(numberCurrentSong);
 		}
 
 		case 9:
@@ -503,12 +477,8 @@ int main()
 					songsInTheTop[j + 1] = songsInTheTop[j];
 					groupInTheTop[j + 1] = groupInTheTop[j];
 					popularSongsInTheTop[j + 1] = popularSongsInTheTop[j];
-
-
-
 					--j;
 				}
-
 				songsInTheTop[j + 1] = temp1;
 				groupInTheTop[j + 1] = temp2;
 				popularSongsInTheTop[j + 1] = temp3;
