@@ -116,6 +116,20 @@ void menu()
     cout << "13) Exit " << endl;
 }
 
+void printPlaylist(int numberOfsongs, SongManagement table[])
+{
+
+    /**Prints out the current playlist*/
+
+    cout << "Playlist: \n" << endl;
+
+    for (int i = 0; i < numberOfsongs; ++i) 
+    {
+        cout << table[i].Gruppa << " - " << table[i].pesni << endl;
+    }
+    return;
+}
+
 void printCurrentSongDetails(int numberOfsongs, SongManagement table[], int currentSongNumber)
 {
     /*
@@ -164,7 +178,6 @@ int currentSongPosition(int numberOfsongs, SongManagement table[], const char *c
 
         return currentSongNumber;
 }
-
 
 void search(std::string searchName, int numberOfsongs, SongManagement table[], const char **targetName[], bool found)
 {
@@ -235,7 +248,7 @@ int main ()
     { 
         int vybor = -1;
 
-        printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv,  nomerTeckusheyPensy);
+        printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
         menu();
 
         cin >> vybor;
@@ -345,31 +358,20 @@ int main ()
 
             case 7: 
             {
-                cout << "Playlist: " << endl;
-                for (int i = 0; i < realnoe_kolichestvo_pesen; ++i) 
-                {
-                    cout << Massiv[i].Gruppa << " - " << Massiv[i].pesni << endl;
-                }
+                printPlaylist(realnoe_kolichestvo_pesen, Massiv);
                 break;
             }
 
             case 8: 
             {
-                cout << "Ok, here is the playlist: " << endl;
+                printPlaylist(realnoe_kolichestvo_pesen, Massiv);
 
-                for (int i = 0; i < realnoe_kolichestvo_pesen; ++i)
-                {
-                    cout << i + 1 << ") " << Massiv[i].Gruppa << " - " << Massiv[i].pesni << endl;
-                }
-
-                cout <<"Enter song position, you want to play: " << endl;
+                cout << "Enter the number of the song you want to play: " << endl;
 
                 int songNomer;
 
                 cin >> songNomer;
-
                 cin.ignore();
-
                 --songNomer;
 
                 if (songNomer > -1 && songNomer < realnoe_kolichestvo_pesen)
@@ -378,39 +380,28 @@ int main ()
                     ++Massiv[nomerTeckusheyPensy].popularnost;
                 }
 
+                printCurrentSongDetails(realnoe_kolichestvo_pesen, Massiv, nomerTeckusheyPensy);
+
+                break;
+            }
+
+            case 9: 
+            {
                 cout << "Now playing: " <<
-                          Massiv[nomerTeckusheyPensy].Gruppa << " - " << Massiv[nomerTeckusheyPensy].pesni << endl;
-
-                if (nomerTeckusheyPensy > 0) 
-                {
-                    cout << "Previous song: " <<
-                              Massiv[nomerTeckusheyPensy - 1].Gruppa << " - " << Massiv[nomerTeckusheyPensy - 1].pesni << endl;
-                }
-
-                if (nomerTeckusheyPensy<realnoe_kolichestvo_pesen-1)
-                {
-                    cout << "Next song: " <<
-                              Massiv[nomerTeckusheyPensy + 1].Gruppa<< " - "<< Massiv[nomerTeckusheyPensy + 1].pesni << endl;
-                }
-
+                    Massiv[nomerTeckusheyPensy].Gruppa << " - " << Massiv[nomerTeckusheyPensy].pesni << endl;
                 break;
             }
 
-            case 9: {
-                cout<< "Now playing: "<<
-                    Massiv[nomerTeckusheyPensy].Gruppa <<" - " <<Massiv[nomerTeckusheyPensy].pesni << endl;
-                break;
-            }
-
-            case 10: {
-                for (int i =0; i < realnoe_kolichestvo_pesen;++i) 
+            case 10: 
+            {
+                for (int i = 0; i < realnoe_kolichestvo_pesen;++i) 
                 {
-                    pesny_VTope[i]= Massiv[i].pesni;
-                    gruppy_v_tope[i] =Massiv[i].Gruppa;
-                    popularnost_pesen_v_tope[i]=Massiv[i].popularnost;
+                    pesny_VTope[i] = Massiv[i].pesni;
+                    gruppy_v_tope[i] = Massiv[i].Gruppa;
+                    popularnost_pesen_v_tope[i] = Massiv[i].popularnost;
                 }
 
-                for (int i = 1;i< realnoe_kolichestvo_pesen;++i)
+                for (int i = 1; i< realnoe_kolichestvo_pesen; ++i)
                 {
 					
                     const char* vremenoeNazvanyePesny = pesny_VTope[i];
@@ -433,7 +424,7 @@ int main ()
 
                 cout << "Chart: " << endl;
 
-                for(int i=0;i <realnoe_kolichestvo_pesen;++i)
+                for(int i=0; i <realnoe_kolichestvo_pesen; ++i)
                 {
                     cout<< (i + 1) << ") "<< gruppy_v_tope[i]<< " - "<< pesny_VTope[i] << endl;
                 }
