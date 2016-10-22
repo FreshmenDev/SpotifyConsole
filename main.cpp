@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 
-// Переменные
+// РџРµСЂРµРјРµРЅРЅС‹Рµ
 const int Number_of_songs_all = 20;
 int Popular_songs_in_the_top[Number_of_songs_all];
 int Popular_songs[Number_of_songs_all];
@@ -14,7 +14,7 @@ std::string An_array_of_groups[Number_of_songs_all];
 std::string The_songs_in_the_top[Number_of_songs_all];
 std::string The_groups_in_the_top[Number_of_songs_all];
 
-// Присваивание массивов
+// РњР°СЃСЃРёРІС‹
 std::string An_array_of_songs[Number_of_songs_all] =
 	{
 		"Should I Stay or Should I Go",
@@ -55,6 +55,7 @@ std::string An_array_of_songs[Number_of_songs_all] =
 		"Foals",
 		"The Smiths",
 	};
+// Р¤СѓРЅРєС†РёСЏ
 
 int Func_Continue_work(int Number_of_the_current_song)
 {
