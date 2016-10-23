@@ -10,7 +10,7 @@ struct SongManagement
 {
     const char *track;
 	const char *band;
-	int         popularity;
+    int popularity;
 
     const char *topSongs;
     const char *topBands;
@@ -26,7 +26,7 @@ void charMoveUpByOne(int &j, const char *temporaryName, const char **targetName[
 
      temporaryName: song or band name
      **targetName:   an array of pointers that should point to a const char* 
-                    member array of type SongManagement
+                     member array of type SongManagement
      &j: loop variable
     */
 
@@ -47,7 +47,7 @@ void intMoveUpByOne(int &j, int temporarySongPopularity, int *targetName[], Song
      SongManagement int array becomes equal to its temporary counterpart.
 
      temporarySongPopularity: number that shows the level of popularity
-     *targetName:            an array of pointers that should point to an int 
+     *targetName:             an array of pointers that should point to an int 
                               member array of type SongManagement
      &j: loop variable
 
@@ -390,7 +390,7 @@ int main ()
                 std::string inputBandName;
                 cout << "Input band name you are looking for: " << endl;
                 std::getline(cin, inputBandName);
-                bool nashel = false;
+                bool found = false;
 
                 // declaring an array of pointers, which will respectively point to 
                 // each element of the existing bands array of type SongManagement
@@ -403,7 +403,7 @@ int main ()
                     comparingTargetName[i] = &(songArray[i].band);
                 }
 
-				search(inputBandName, NUMBER_OF_SONGS, songArray, comparingTargetName, nashel);
+				search(inputBandName, NUMBER_OF_SONGS, songArray, comparingTargetName, found);
 
                 break;
             }
@@ -412,7 +412,7 @@ int main ()
                 std::string inputSongName;
                 cout << "Input song name you are looking for: " << endl;
                 std::getline(cin, inputSongName);
-                bool nashel = false;
+                bool found = false;
 				
                 // declaring an array of pointers, which will respectively point to 
                 // each element of the existing song names array of type SongManagement
@@ -425,7 +425,7 @@ int main ()
                     comparingTargetName[i] = &(songArray[i].track);
                 }
 
-                search(inputSongName, NUMBER_OF_SONGS, songArray, comparingTargetName, nashel);
+                search(inputSongName, NUMBER_OF_SONGS, songArray, comparingTargetName, found);
 
                 break;
             }
