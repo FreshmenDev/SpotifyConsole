@@ -9,7 +9,7 @@ using std::endl;
 struct SongManagement
 {
     const char *track;
-	const char *band;
+    const char *band;
     int popularity;
 
     const char *topSongs;
@@ -403,7 +403,7 @@ int main ()
                     comparingTargetName[i] = &(songArray[i].band);
                 }
 
-				search(inputBandName, NUMBER_OF_SONGS, songArray, comparingTargetName, found);
+                search(inputBandName, NUMBER_OF_SONGS, songArray, comparingTargetName, found);
 
                 break;
             }
@@ -486,7 +486,7 @@ int main ()
 
                 currentSongNumber = currentSongPosition(NUMBER_OF_SONGS, songArray, currentSongName, currentGroupName);
 
-				cout << "\nCurrent song position: " << currentSongNumber + 1 << endl;
+                cout << "\nCurrent song position: " << currentSongNumber + 1 << endl;
 
                 printCurrentSongDetails(NUMBER_OF_SONGS, songArray, currentSongNumber);
 
