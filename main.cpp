@@ -12,6 +12,24 @@ std::string massivBand[number_of_songs_of_all];
 std::string  songs_in_top[number_of_songs_of_all];
 std::string band_in_top[number_of_songs_of_all];
 
+std::string massiv_song[number_of_songs_of_all] =
+  {
+    "Should I Stay or Should I Go",
+    "Baby don't lie to me",
+    "Ole Black 'n' Blue Eyes",
+    "Like A Champion",
+    "Jackie and Wilson",
+    "Mountains",
+    "When It's Cold I'd Like to Die",
+    "Damn Your Eyes",
+    "Heroes",
+    "No Diggity",
+    "Inhaler",
+    "London Thunder",
+    "Spanish Sahara",
+    "Asleep"
+  };
+
 
 int main () {
     const int number_of_songs_of_all = 20;
