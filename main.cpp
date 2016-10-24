@@ -30,6 +30,28 @@ std::string massiv_song[number_of_songs_of_all] =
     "Asleep"
   };
 
+ int popularity_of_songs[number_of_songs_of_all] =
+  {
+    0,0,0,0,0,0,0,0,0,0,0,0,0
+  };
+  std::string massivBand[number_of_songs_of_all] =
+  {
+    "The Clash",
+    "The Fratellis",
+    "The Fratellis",
+    "The Baseballs",
+    "Hoizer",
+    "Message To Bears",
+    "Moby",
+    "Alex Clare",
+    "David Bowie",
+    "Chet Faker",
+    "Foals",
+    "Foals",
+    "Foals",
+    "The Smiths",
+  };
+
 
 int main () {
     const int number_of_songs_of_all = 20;
