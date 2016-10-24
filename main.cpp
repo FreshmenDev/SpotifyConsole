@@ -72,125 +72,45 @@ std::string massiv_song[number_of_songs_of_all] =
 
 
 int main () {
-    const int number_of_songs_of_all = 20;
+	real_number_of_songs = 14;
 
-    const char* massiv_song[number_of_songs_of_all];
-    const char* massivBand[number_of_songs_of_all];
-    int popularity_of_songs[number_of_songs_of_all];
+   bool continue_work = true;
+   while (continue_work)
+  {
+    Func_continue_work(numberOfTheCurrentSong);
 
+    std::cout « "Enter action you want to make: " « std::endl;
 
-    const char* songs_in_top[number_of_songs_of_all];
-    const char* band_in_top[number_of_songs_of_all];
-    int popularity_of_songs_in_top[number_of_songs_of_all];
+    std::cout « "1) Play next" « std::endl;
 
-    int real_number_of_songs = 0;
-    int numberOfTheCurrentSong = 0;
+    std::cout « "2) Play prev" « std::endl;
 
-   massiv_song[0] = "Should I Stay or Should I Go";
-    massivBand[0] = "The Clash";
-    popularity_of_songs[0] = 0;
+    std::cout « "3) Group by band" « std::endl;
 
-   massiv_song[1] = "Baby don't lie to me";
-    massivBand[1] = "The Fratellis";
-    popularity_of_songs[1] = 0;
+    std::cout « "4) Group by song name" « std::endl;
 
-    massiv_song[2] = "Ole Black 'n' Blue Eyes";
-    massivBand[2] = "The Fratellis";
-    popularity_of_songs[2] = 0;
+    std::cout « "5) Search song by band " « std::endl;
 
-   massiv_song[3] = "Like A Champion";
-    massivBand[3] = "The Baseballs";
-    popularity_of_songs[3] = 0;
+    std::cout « "6) Search song by name " « std::endl;
 
-    massiv_song[4] = "Jackie and Wilson";
-    massivBand[4] = "Hoizer";
-    popularity_of_songs[4] = 0;
+    std::cout « "7) Show playlist " « std::endl;
 
-    massiv_song[5] = "Mountains";
-    massivBand[5] = "Message To Bears";
-    popularity_of_songs[5] = 0;
+    std::cout « "8) Play specific song (specified by position) " « std::endl;
 
-    massiv_song[6] = "When It's Cold I'd Like to Die";
-    massivBand[6] = "Moby";
-    popularity_of_songs[6] = 0;
+    std::cout « "9) What is playing now? " « std::endl;
 
-    massiv_song[7] = "Damn Your Eyes";
-    massivBand[7] = "Alex Clare";
-    popularity_of_songs[7] = 0;
+    std::cout « "10) Show my chart " « std::endl;
 
-    massiv_song[8] = "Heroes";
-    massivBand[8] = "David Bowie";
-    popularity_of_songs[8] = 0;
+    std::cout « "11) Sort by popularity " « std::endl;
 
-    massiv_song[9] = "No Diggity";
-    massivBand[9] = "Chet Faker";
-    popularity_of_songs[9] = 0;
+    std::cout « "12) Show the most popular band " « std::endl;
 
-    massiv_song[10] = "Inhaler";
-    massivBand[10] = "Foals";
-    popularity_of_songs[10] = 0;
+    std::cout « "13) Exit " « std::endl;
 
-    massiv_song[11] = "London Thunder";
-    massivBand[11] = "Foals";
-    popularity_of_songs[11] = 0;
+    std::cin » choice;
 
-    massiv_song[12] = "Spanish Sahara";
-    massivBand[12] = "Foals";
-    popularity_of_songs[12] = 0;
-
-    massiv_song[13] = "Asleep";
-    massivBand[13] = "The Smiths";
-    popularity_of_songs[13] = 0;
-
-    real_number_of_songs = 14;
-
-    bool continueWork = true;
-
-    while (continueWork) { int choice = -1;
-
-        std::cout << std::endl << "Now playing: " <<
-                  massivBand[numberOfTheCurrentSong] << " - " << massiv_song[numberOfTheCurrentSong] << std::endl;
-
-        if (numberOfTheCurrentSong > 0) {std::cout << "Previous song: " <<
-                        massivBand[numberOfTheCurrentSong - 1] << " - " << massiv_song[numberOfTheCurrentSong - 1] << std::endl;
-        }
-
-        if (numberOfTheCurrentSong <real_number_of_songs - 1) {
-            std::cout << "Next song: " <<
-                          massivBand[numberOfTheCurrentSong + 1] << " - " << massiv_song[numberOfTheCurrentSong + 1] << std::endl;
-        }
-
-
-        std::cout << "Enter action you want to make: " << std::endl;
-
-        std::cout << "1) Play next" << std::endl;
-
-        std::cout << "2) Play prev" << std::endl;
-
-        std::cout << "3) Group by band" << std::endl;
-
-                            std::cout << "4) Group by song name" << std::endl;
-
-           std::cout << "5) Search song by band " << std::endl;
-
-                            std::cout << "6) Search song by name " << std::endl;
-            std::cout << "7) Show playlist " << std::endl;
-
-                            std::cout << "8) Play specific song (specified by position) " << std::endl;
-
-        std::cout << "9) What is playing now? " << std::endl;
-
-        std::cout << "10) Show my chart " << std::endl;
-
-        std::cout << "11) Sort by popularity " << std::endl;
-
-                std::cout << "12) Show the most popular band " << std::endl;
-
-        std::cout << "13) Exit " << std::endl;
-
-        std::cin >> choice;
-
-        std::cin.ignore();
+    std::cin.ignore();
+  }
 
         switch (choice) {
             case 1: {
