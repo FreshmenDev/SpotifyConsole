@@ -77,7 +77,7 @@ int main () {
    bool continue_work = true;
    while (continue_work)
   {
-    Func_continue_work(numberOfTheCurrentSong);
+    func_continue_work(numberOfTheCurrentSong);
 
     std::cout « "Enter action you want to make: " « std::endl;
 
@@ -130,19 +130,19 @@ int main () {
             }
 
             case 3: {
-                const char* TMP = massiv_song[numberOfTheCurrentSong];
-                const char* TMP2 = massivBand[numberOfTheCurrentSong];
+                std::string TMP = massiv_song[numberOfTheCurrentSong];
+                std::string TMP2 = massivBand[numberOfTheCurrentSong];
                 int currentPopularity = popularity_of_songs[numberOfTheCurrentSong];
 
 
                 for (int i = 1; i < real_number_of_songs; ++i)
                 {
-                    const char* tmp =massiv_song[i];
-                    const char* temp= massivBand[i];
+                    std::string tmp =massiv_song[i];
+                    std::string temp= massivBand[i];
                     int variable = popularity_of_songs[i];
 
                     int j = i-1;
-                    while (j> -1 && std::strcmp(temp, massivBand[j]) != 0) {
+                    while (j> -1 && std::strcmp(temp.c_str(), massivBand[j].c_str()) != 0) {
                         massiv_song[j + 1] = massiv_song[j];
                         massivBand[j +1] = massivBand[j];
                         popularity_of_songs[j+1] = popularity_of_songs[j];
@@ -161,8 +161,8 @@ int main () {
                 }
 
                 for (int i = 0; i < real_number_of_songs; ++i) {
-                    if (std::strcmp(TMP2, massivBand[i]) == 0
-                        && std::strcmp(TMP, massiv_song[i]) == 0) {
+                    if (std::strcmp(TMP2.c_str(), massivBand[i].c_str()) == 0
+                        && std::strcmp(TMP.c_str(), massiv_song[i].c_str()) == 0) {
                         numberOfTheCurrentSong = i;
                         break;
                     }
@@ -170,18 +170,8 @@ int main () {
 
                 std::cout << "Current song position: " << numberOfTheCurrentSong + 1 << std::endl;
 
-                std::cout << "Now playing: " <<
-                          massivBand[numberOfTheCurrentSong] << " - " << massiv_song[numberOfTheCurrentSong] << std::endl;
-
-                if (numberOfTheCurrentSong > 0) {
-                    std::cout << "Previous song: " <<
-                              massivBand[numberOfTheCurrentSong - 1] << " - " << massiv_song[numberOfTheCurrentSong - 1] << std::endl;
-                }
-
-                if (numberOfTheCurrentSong < real_number_of_songs - 1) {
-                    std::cout << "Next song: " <<
-                              massivBand[numberOfTheCurrentSong + 1] << " - " << massiv_song[numberOfTheCurrentSong + 1] << std::endl;
-                }
+				  func_continue_work(numberOfTheCurrentSong);
+                
                 break;
             }
 
