@@ -1,6 +1,17 @@
 #include <iostream>
 #include <string>
 
+const int number_of_songs_of_all = 20;
+int popularity_of_songs_in_top[number_of_songs_of_all];
+int popularity_of_songs[number_of_songs_of_all];
+int real_number_of_songs = 0;
+int numberOfTheCurrentSong = 0;
+int choice = -1;
+std::string massiv_song[number_of_songs_of_all];
+std::string massivBand[number_of_songs_of_all];
+std::string  songs_in_top[number_of_songs_of_all];
+std::string band_in_top[number_of_songs_of_all];
+
 
 int main () {
     const int number_of_songs_of_all = 20;
@@ -10,7 +21,7 @@ int main () {
     int popularity_of_songs[number_of_songs_of_all];
 
 
-    const char* songs_INTop[number_of_songs_of_all];
+    const char* songs_in_top[number_of_songs_of_all];
     const char* band_in_top[number_of_songs_of_all];
     int popularity_of_songs_in_top[number_of_songs_of_all];
 
@@ -350,24 +361,24 @@ int main () {
 
             case 10: {
                 for (int i =0; i < real_number_of_songs;++i) {
-                    songs_INTop[i]= massiv_song[i];
+                    songs_in_top[i]= massiv_song[i];
                     band_in_top[i] =massivBand[i];
                     popularity_of_songs_in_top[i]=popularity_of_songs[i];
                 }
 
                 for (int i = 1;i< real_number_of_songs;++i) {
-const char* nameOfTheCurrentSong = songs_INTop[i];
+const char* nameOfTheCurrentSong = songs_in_top[i];
                     const char* nameOfTheCurrentBand = band_in_top[i];int popularityOfATemporarySong = popularity_of_songs_in_top[i];
 
                     int j = i - 1;
                     while (j > -1 && popularity_of_songs_in_top[j] < popularityOfATemporarySong) {
-                        songs_INTop[j + 1] = songs_INTop[j];
+                        songs_in_top[j + 1] = songs_in_top[j];
                   gruppy_in_top[j + 1] = gruppy_in_top[j];
                         popularity_of_songs_in_top[j + 1] = popularity_of_songs_in_top[j];
                         --j;
                     }
 
-                    songs_INTop[j + 1] = nameOfTheCurrentSong;
+                    songs_in_top[j + 1] = nameOfTheCurrentSong;
                     gruppy_in_top[j + 1] = nameOfTheCurrentBand;
                     popularity_of_songs_in_top[j + 1] = popularityOfATemporarySong;
                 }
@@ -375,7 +386,7 @@ const char* nameOfTheCurrentSong = songs_INTop[i];
                 std::cout << "Chart: " << std::endl;
 
                 for(int i=0;i <real_number_of_songs;++i){
-                    std::cout<< (i + 1) << ") "<< band_in_top[i]<< " - "<< songs_INTop[i] << std::endl;
+                    std::cout<< (i + 1) << ") "<< band_in_top[i]<< " - "<<songs_in_top[i] << std::endl;
                 }
 
                 break;
@@ -427,17 +438,17 @@ const char* nameOfTheCurrentSong = songs_INTop[i];
             case 12: {
                 for (int i = 0; i < real_number_of_songs; ++i)
                 {
-                    songs_INTop[i] = massiv_song[i];
+                    songs_in_top[i] = massiv_song[i];
                         band_in_top[i] = massivBand[i];
                     popularity_of_songs_in_top[i] = popularity_of_songs[i]; }
 
-                for (int i = 1; i < real_number_of_songs; ++i) { const char* temp1 = songs_INTop[i]; const char* temp2 = band_in_top[i];
+                for (int i = 1; i < real_number_of_songs; ++i) { const char* temp1 = songs_in_top[i]; const char* temp2 = band_in_top[i];
                     int temp3 = popularity_of_songs_in_top[i];
 
                     int j = i - 1;
                     while (j > -1 && popularity_of_songs_in_top[j] < temp3)
                     {
-                        songs_INTop[j + 1] = songs_INTop[j];
+                        songs_in_top[j + 1] = songs_in_top[j];
                         band_in_top[j + 1] = band_in_top[j];
                         popularity_of_songs_in_top[j + 1] = popularity_of_songs_in_top[j];
 
@@ -446,7 +457,7 @@ const char* nameOfTheCurrentSong = songs_INTop[i];
                         --j;
                     }
 
-                    songs_INTop[j + 1] = temp1;
+                    songs_in_top[j + 1] = temp1;
                         band_in_top[j + 1] = temp2;
                     popularity_of_songs_in_top[j + 1] = temp3;
                 }
