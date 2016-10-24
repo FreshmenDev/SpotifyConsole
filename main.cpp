@@ -52,6 +52,24 @@ std::string massiv_song[number_of_songs_of_all] =
     "The Smiths",
   };
 
+  int continue_work(int numberOfTheCurrentSong)
+{
+    std::cout « std::endl « "Now playing: " « massivBand[numberOfTheCurrentSong]
+      « " - " « massiv_song[numberOfTheCurrentSong] « std::endl;
+
+    if (numberOfTheCurrentSong > 0)
+    {
+      std::cout « "Previous song: " « massivBand[numberOfTheCurrentSong - 1]
+        « " - " « massiv_song[numberOfTheCurrentSong - 1] « std::endl;
+    }
+
+    if (numberOfTheCurrentSong < massiv_song - 1)
+    {
+      std::cout « "Next song: " « massivBand[numberOfTheCurrentSong + 1] « " - " « massiv_song[numberOfTheCurrentSong + 1] « std::endl;
+    }
+  return  0;
+};
+
 
 int main () {
     const int number_of_songs_of_all = 20;
