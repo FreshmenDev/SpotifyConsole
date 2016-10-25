@@ -356,9 +356,9 @@ int main () {
                       --j;
                     }
 
-                    array_songs[j + 1] = vNS;
-                    array_group[j + 1] = vNG;
-                    popular_songs[j + 1] = pVP;
+                    arraySongs[j + 1] = vNS;
+                    arrayGroup[j + 1] = vNG;
+                    popularSongs[j + 1] = pVP;
                 }
 
                 newPlaylistOrder()
