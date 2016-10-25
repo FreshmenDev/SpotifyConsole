@@ -171,12 +171,12 @@ int main () {
 				
                 for (int i = 1; i < real; ++i)
                 {
-                    const char* tmp =arraySongs[i];
-                    const char* temp= arrayGroup[i];
+                    const char* tmp = arraySongs[i];
+                    const char* temp = arrayGroup[i];
                     int variable = popularSongs[i];
 
                     int j = i-1;
-                    while (j> -1 && std::strcmp(temp, array_group[j]) != 0) {
+                    while (j> -1 && std::strcmp(temp, arrayGroup[j]) != 0) {
                         arraySongs[j + 1] = arraySongs[j];
                         arrayGroup[j +1] = arrayGroup[j];
                         popularSongs[j+1] = popularSongs[j];
@@ -206,7 +206,7 @@ int main () {
 
                     
 					int j = i-1;
-                    while (j >-1 && std::strcmp(vremenoeNazvanyePesny,array_songs[j])!=0) {
+                    while (j >-1 && std::strcmp(vNS,array_songs[j])!=0) {
                         arraySongs[j + 1] = arraySongs[j];
                         arrayGroup[j + 1] = arrayGroup[j];
                         popularSongs[j + 1] = popularSongs[j];
@@ -380,7 +380,7 @@ int main () {
                     int pVP = topPopularSongs[i];
 
                     int j = i - 1;
-                    while (j > -1 && top_popular_songs[j] < temp3) {
+                    while (j > -1 && topPopularSongs[j] < pVP) {
                         topSongs[j + 1] = topSongs[j];
                         topGroup[j + 1] = topGroup[j];
                         topPopularSongs[j + 1] = topPopularSongs[j];
