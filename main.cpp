@@ -3,23 +3,23 @@
 
 const int TOTAL_NUMBER_OF_SONGS = 20; // количество песен всего
 
-void cout_nowPlaying() { //вывод играющей песни. процедура
+void coutNowPlaying() { //вывод играющей песни. процедура
 	std::cout << std::endl << "Now playing: " << arrayGroup[numberCurrentSong] << " - " << arraySongs[numberCurrentSong] << std::endl;
 }
 
-void cout_previousSong() { // вывод предыдущей песни. процедура
+void coutPreviousSong() { // вывод предыдущей песни. процедура
 	if (numberCurrentSong > 0) {
 		std::cout << "Previous song: " << arrayGroup[numberCurrentSong - 1] << " - " << arraySongs[numberCurrentSong - 1] << std::endl;
 	}
 }
 
-void cout_nextSong() { // вывод следующей песни. процедура
+void coutNextSong() { // вывод следующей песни. процедура
 	if (numberCurrentSong < real - 1) {
         std::cout << "Next song: " << arrayGroup[numberCurrentSong + 1] << " - " << arraySongs[numberCurrentSong + 1] << std::endl;
 	}
 }
 
-void cout_inPosition() {
+void coutInPosition() { // вывод позиции
 	if (found) {
 		std::cout << "Now you can play any song by it position" << std::endl;
 	}
@@ -126,9 +126,9 @@ int main () {
 		
 		int choise = -1;
 
-        cout_nowPlaying();
-		cout_previousSong();
-		cout_nextSong();
+        coutNowPlaying();
+		coutPreviousSong();
+		coutNextSong();
 
         std::cout << "Enter action you want to make: " << std::endl;
         std::cout << "1) Play next" << std::endl;
@@ -191,21 +191,18 @@ int main () {
                 newPlaylistOrder();
 
 				std::cout << "Current song position: " << numberCurrentSong + 1 << std::endl;
-				cout_nowPlaying();
-				cout_previousSong();
-				cout_nextSong();
+				coutNowPlaying();
+				coutPreviousSong();
+				coutNextSong();
                 break;
             }
 
             case 4: {
-                const char* songNow = arraySongs[numberCurrentSong]; // название текущей песни
-                const char* groupNow = arrayGroup[numberCurrentSong]; // название текущей группы
-                int popular_groupNow = popularSongs[numberCurrentSong]; //попул€рность текущей группы
 
                 for (int i = 1; i<real; ++i) {
-                    const char* vremenoeNazvanyePesny = arraySongs[i];
-                    const char* vremenoeNazvanyeGruppy = arrayGroup[i];
-                    int popularnostVremennoyPesny = popularSongs[i];
+                    const char* vNS = arraySongs[i];
+                    const char* vNG = arrayGroup[i];
+                    int pVP = popularSongs[i];
 
                     
 					int j = i-1;
@@ -216,18 +213,18 @@ int main () {
                         --j;
 					}
 
-                    arraySongs[j + 1] = vremenoeNazvanyePesny;
-                    arrayGroup[j + 1] = vremenoeNazvanyeGruppy;
-                    popularSongs[j + 1] = popularnostVremennoyPesny;
+                    arraySongs[j + 1] = vNS;
+                    arrayGroup[j + 1] = vNG;
+                    popularSongs[j + 1] = pVP;
                 }
 
                 newPlaylistOrder();
 
                 std::cout << "Current song position: "<< numberCurrentSong << std::endl;
 
-                cout_nowPlaying();
-				cout_previousSong();
-				cout_nextSong()
+                coutNowPlaying();
+				coutPreviousSong();
+				coutNextSong()
                 break;
             }
 
@@ -243,7 +240,7 @@ int main () {
                     }
                 }
 
-                cout_inPosition();
+                coutInPosition();
             }
 
             case 6: {
@@ -258,7 +255,7 @@ int main () {
                     }
                 }
 
-                cout_inPosition()
+                coutInPosition()
             }
 
             case 7: {
@@ -291,15 +288,15 @@ int main () {
                     ++popularSongs[numberCurrentSong];
                 }
 
-                cout_nowPlaying();
-				cout_previousSong();
-				cout_nextSong();
+                coutNowPlaying();
+				coutPreviousSong();
+				coutNextSong();
 
                 break;
             }
 
             case 9: {
-                cout_nowPlaying();
+                coutNowPlaying();
                 break;
             }
 
@@ -362,7 +359,7 @@ int main () {
                 }
 
                 newPlaylistOrder()
-				cout_nowPlaying();
+				coutNowPlaying();
 
                 std::cout << "Song, you are listening on " << numberCurrentSong + 1 << " position of chart" << std::endl;
                 break;
