@@ -311,21 +311,21 @@ int main () {
                 }
 
                 for (int i = 1;i< real;++i) {
-					const char* vremenoeNazvanyePesny = topSongs[i];
-					const char* vremenoeNazvanyeGruppy = topGroup[i];
-					int popularnostVremennoyPesny = topPopularSongs[i];
+					const char* vNS = topSongs[i]; // временное название песни
+					const char* vNG = topGroup[i]; // временное название группы
+					int pVP = topPopularSongs[i]; // популярность временной песни
 
                     int j = i - 1;
-                    while (j > -1 && top_popular_songs[j] < popularnostVremennoyPesny) {
+                    while (j > -1 && topPopularSongs[j] < pVP) {
                         topSongs[j + 1] = topSongs[j];
 						topGroup[j + 1] = topGroup[j];
                         topPopularSongs[j + 1] = topPopularSongs[j];
                         --j;
                     }
 
-                    topSongs[j + 1] = vremenoeNazvanyePesny;
-                    topGroup[j + 1] = vremenoeNazvanyeGruppy;
-                    topPopularSongs[j + 1] = popularnostVremennoyPesny;
+                    topSongs[j + 1] = vNS;
+                    topGroup[j + 1] = vNG;
+                    topPopularSongs[j + 1] = pVP;
                 }
 
                 std::cout << "Chart: " << std::endl;
@@ -344,21 +344,21 @@ int main () {
                 int currentSongPopularity = popularSongs[numberCurrentSong];
 
                 for (int i = 1; i < real; ++i) { 
-					const char* vremenoeNazvanyePesny = array_songs[i];
-                    const char* vremenoeNazvanyeGruppy = arrayGroup[i];
-                    int popularnostVremennoyPesny = popularSongs[i];
+					const char* vNS = arraySongs[i]; // временное название песни
+                    const char* vNG = arrayGroup[i]; // временное название группы
+                    int pVP = popularSongs[i]; // популярность временной песни
 
                     int j = i - 1;
-                    while (j > -1 && popularSongs[j] < popularnostVremennoyPesny) {
+                    while (j > -1 && popularSongs[j] < pVP) {
                       arraySongs[j + 1] = arraySongs[j];
                       arrayGroup[j + 1] = arrayGroup[j];
                       popularSongs[j + 1] = popularSongs[j];
                       --j;
                     }
 
-                    array_songs[j + 1] = vremenoeNazvanyePesny;
-                    array_group[j + 1] = vremenoeNazvanyeGruppy;
-                    popular_songs[j + 1] = popularnostVremennoyPesny;
+                    array_songs[j + 1] = vNS;
+                    array_group[j + 1] = vNG;
+                    popular_songs[j + 1] = pVP;
                 }
 
                 newPlaylistOrder()
@@ -378,9 +378,9 @@ int main () {
 
                 for (int i = 1; i < real; ++i) { 
 					
-					const char* temp1 = top_songs[i]; 
-					const char* temp2 = top_group[i];
-                    int temp3 = topPopularSongs[i];
+					const char* vNS = topSongs[i]; 
+					const char* vNG = topSongs[i];
+                    int pVP = topPopularSongs[i];
 
                     int j = i - 1;
                     while (j > -1 && top_popular_songs[j] < temp3) {
@@ -390,9 +390,9 @@ int main () {
                         --j;
                     }
 
-                    top_songs[j + 1] = temp1;
-                    top_group[j + 1] = temp2;
-                    topPopularSongs[j + 1] = temp3;
+                    topSongs[j + 1] = vNS;
+                    topGroup[j + 1] = vNG;
+                    topPopularSongs[j + 1] = pVP;
                 }
 
 				std::cout << "Most popular band is: " << topGroup[0] << std::endl;
