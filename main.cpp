@@ -30,6 +30,11 @@ void cout_inPosition() {
 	break;
 }
 
+void plusOne() { // 1 and 2 case
+	--numberCurrentSong;
+	++popularSongs[numberCurrentSong];
+}
+
 void newPlaylistOrder() {
 	std::cout << "New playlist order " << std::endl;
 	for (int i = 0; i < real; ++i) {
@@ -148,16 +153,14 @@ int main () {
             case 1: {
                 
 				if (numberCurrentSong != real - 1) {
-                    ++numberCurrentSong;
-                    ++popularSongs[numberCurrentSong]; 
+                plusOne() 
 				}
                 break;
             }
 
             case 2: {
                 if (numberCurrentSong > 0) {
-                    --numberCurrentSong;
-                    ++popularSongs[numberCurrentSong];
+                plusOne()
                 }
                 break;
             }
@@ -218,19 +221,7 @@ int main () {
                     popularSongs[j + 1] = popularnostVremennoyPesny;
                 }
 
-                std::cout << "New playlist order " << std::endl;
-
-                for (int i = 0; i<real; ++i) {
-                    std::cout << arrayGroup[i] <<" - " << arraySongs[i] << std::endl;
-                }
-
-                for (int i = 0; i < real; ++i){
-                    if (std::strcmp(groupNow, arrayGroup[i]) == 0
-                        && std::strcmp(songNow, arraySongs[i]) == 0) {
-                        numberCurrentSong = i;
-                        break;
-                    }
-				}
+                newPlaylistOrder();
 
                 std::cout << "Current song position: "<< numberCurrentSong << std::endl;
 
