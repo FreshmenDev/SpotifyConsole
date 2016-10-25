@@ -163,7 +163,7 @@ int main () {
             }
 
             case 3: {
-                const char* TMP = arraySongs[numberCurrentSong];
+
                 const char* TMP2 = arrayGroup[numberCurrentSong];
                 int popular_now = popularSongs[numberCurrentSong]; // текуща€ попул€рность
 				
