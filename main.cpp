@@ -6,29 +6,24 @@ const int AMOUNT_OF_SONGS = 20;
 
 struct Song {
 	std::string track;
-	std::string group;
+	std::string band;
 	int popularity;
 } allSongs[AMOUNT_OF_SONGS];
-
-struct Popular {
-	std::string topSongs;
-	std::string topGroups;
-	int popularityIndex;
-} topList[AMOUNT_OF_SONGS];
 
 bool needToCompareTwoStrings, needToComparePopularity, findBandName, findSongName;
 std::string stringBand, stringSong;
 
 void printInformation(int currentSongIndex, int amountOfSongs, Song Songs[]);
 void printNewPlaylistOrder(int amountOfSongs, Song Songs[]);
-void sortingSongs(int currentSongIndex, int amountOfSongs, Song Songs[], Popular TopSongs[]);
+void sortingSongs(int currentSongIndex, int amountOfSongs, Song Songs[], Song TopSongs[]);
 void changeSongNumber(int currentSongIndex, int amountOfSongs, Song Songs[]);
 void searchingSong(int amountOfSongs, std::string stringForOutputtingBandOrSong, Song Songs[]);
-void updateTopList(int amountOfSongs, Song Songs[], Popular TopSongs[]);
+void updateTopList(int amountOfSongs, Song Songs[], Song TopSongs[]);
 
 
 int main () {
-    	int amountOfAllSongs = 0;
+	Song topList[AMOUNT_OF_SONGS];
+    int amountOfAllSongs = 0;
 	int numberOfTheCurrentSong = 0;
 
 	allSongs[0] = { "Should I Stay or Should I Go", "The Clash", 0 };
@@ -53,7 +48,7 @@ int main () {
     	while (continueWork) { 
 		int selection = -1;
 
-        	printInformation(numberOfTheCurrentSong, amountOfAllSongs, allSongs); 
+        printInformation(numberOfTheCurrentSong, amountOfAllSongs, allSongs); 
 		// процедура вывода информации о текущей песне, следующей и предыдущей
 
         	std::cout << "Enter action you want to make: \n" <<
@@ -80,7 +75,7 @@ int main () {
                	 if (numberOfTheCurrentSong != amountOfAllSongs - 1) {
                     ++numberOfTheCurrentSong;
                     ++allSongs[numberOfTheCurrentSong].popularity; 
-		}
+				}
                 break;
             }
 
@@ -94,12 +89,12 @@ int main () {
 
             case 3: {
                 needToCompareTwoStrings = true; needToComparePopularity = false;
-		// нужно ли менять номер текущего трека, выводить информацию, мы находимся в Case3,4,11 или 10, 12
-		sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
-		// вызываю процедуру для сортировки песен, групп и популярностей песен
-		printNewPlaylistOrder(amountOfAllSongs, allSongs); // выводит порядок воспроизведения песен на экран
+				// нужно ли менять номер текущего трека, выводить информацию, мы находимся в Case3,4,11 или 10, 12
+				sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
+				// вызываю процедуру для сортировки песен, групп и популярностей песен
+				printNewPlaylistOrder(amountOfAllSongs, allSongs); // выводит порядок воспроизведения песен на экран
 		    
-		changeSongNumber(numberOfTheCurrentSong, amountOfAllSongs, allSongs); // изменяет старый номер трека на новый 
+				changeSongNumber(numberOfTheCurrentSong, amountOfAllSongs, allSongs); // изменяет старый номер трека на новый 
 		    
                 std::cout << "Current song position: " << numberOfTheCurrentSong + 1 << std::endl;
 
@@ -109,11 +104,11 @@ int main () {
 
             case 4: {
                 needToCompareTwoStrings = true;
-		sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
+				sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
 
-		printNewPlaylistOrder(amountOfAllSongs, allSongs); 
+				printNewPlaylistOrder(amountOfAllSongs, allSongs); 
 
-		changeSongNumber(numberOfTheCurrentSong, amountOfAllSongs, allSongs);
+				changeSongNumber(numberOfTheCurrentSong, amountOfAllSongs, allSongs);
 		
                 std::cout<<"Current song position: "<< numberOfTheCurrentSong << std::endl;
 
@@ -122,23 +117,23 @@ int main () {
             }
 
             case 5: {
-		stringBand = "band";
-		findBandName = true, findSongName = false;	
-		searchingSong(amountOfAllSongs, stringBand, allSongs); // ищем трек по названия группы или песни
+				stringBand = "band";
+				findBandName = true, findSongName = false;	
+				searchingSong(amountOfAllSongs, stringBand, allSongs); // ищем трек по названия группы или песни
                 break;
             }
 
             case 6: {
-		stringSong = "song";
-		findSongName = true;
-		searchingSong(amountOfAllSongs, stringSong, allSongs);
+				stringSong = "song";
+				findSongName = true;
+				searchingSong(amountOfAllSongs, stringSong, allSongs);
                 break;
             }
 
             case 7: {
                 std::cout << "Playlist: " << std::endl;
                 for (int i = 0; i < amountOfAllSongs; ++i) {
-                    std::cout << allSongs[i].group << " - " << allSongs[i].track << std::endl;
+                    std::cout << allSongs[i].band << " - " << allSongs[i].track << std::endl;
                 }
                 break;
             }
@@ -147,7 +142,7 @@ int main () {
                 std::cout << "Ok, here is the playlist: " << std::endl;
 
                 for (int i = 0; i < amountOfAllSongs; ++i){
-                    std::cout << i + 1 << ") " << allSongs[i].group << " - " << allSongs[i].track << std::endl;
+                    std::cout << i + 1 << ") " << allSongs[i].band << " - " << allSongs[i].track << std::endl;
                 }
 
                 std::cout <<"Enter song position, you want to play: " << std::endl;
@@ -171,12 +166,12 @@ int main () {
 
             case 9: {
                 std::cout<< "Now playing: "<<
-                          allSongs[numberOfTheCurrentSong].group << " - " << allSongs[numberOfTheCurrentSong].track << std::endl;
+                          allSongs[numberOfTheCurrentSong].band << " - " << allSongs[numberOfTheCurrentSong].track << std::endl;
                 break;
             }
 
             case 10: {
-		needToComparePopularity = true;
+				needToComparePopularity = true;
 		
                 updateTopList(amountOfAllSongs, allSongs, topList);
 
@@ -185,21 +180,21 @@ int main () {
                 std::cout << "Chart: " << std::endl;
 
                 for(int i=0;i < amountOfAllSongs;++i){
-                    std::cout<< (i + 1) << ") "<< topList[i].topGroups << " - " << topList[i].topSongs << std::endl;
+                    std::cout<< (i + 1) << ") "<< topList[i].band << " - " << topList[i].track << std::endl;
                 }
 
                 break;
             }
 
             case 11: {
-		needToCompareTwoStrings = true;
-		sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
+				needToCompareTwoStrings = true;
+				sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
 
-		printNewPlaylistOrder(amountOfAllSongs, allSongs);
+				printNewPlaylistOrder(amountOfAllSongs, allSongs);
 
-		changeSongNumber(numberOfTheCurrentSong, amountOfAllSongs, allSongs);
+				changeSongNumber(numberOfTheCurrentSong, amountOfAllSongs, allSongs);
 
-                std::cout << "Now playing: " << allSongs[numberOfTheCurrentSong].group << " - " << allSongs[numberOfTheCurrentSong].track << std::endl;
+                std::cout << "Now playing: " << allSongs[numberOfTheCurrentSong].band << " - " << allSongs[numberOfTheCurrentSong].track << std::endl;
 
                 std::cout << "Song, you are listening on " << numberOfTheCurrentSong + 1 << " position of chart" << std::endl;
                 break;
@@ -207,13 +202,13 @@ int main () {
 
 
             case 12: {
-		needToComparePopularity = true;
+				needToComparePopularity = true;
 		
                 updateTopList(amountOfAllSongs, allSongs, topList);
 		
-		sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
+				sortingSongs(numberOfTheCurrentSong, amountOfAllSongs, allSongs, topList);
 
-                std::cout << "Most popular band is: " << topList[0].topGroups << std::endl;
+                std::cout << "Most popular band is: " << topList[0].band << std::endl;
                 break;
             }
 
@@ -232,16 +227,16 @@ int main () {
 
 void printInformation(int currentSongIndex, int amountOfSongs, Song Songs[]) { // процедура вывода информации о текущей песне, следующей и предыдущей
 	std::cout << std::endl << "Now playing: " <<
-		Songs[currentSongIndex].group << " - " << Songs[currentSongIndex].track << std::endl;
+		Songs[currentSongIndex].band << " - " << Songs[currentSongIndex].track << std::endl;
 
 	if (currentSongIndex > 0) {
 		std::cout << "Previous song: " <<
-			Songs[currentSongIndex - 1].group << " - " << Songs[currentSongIndex - 1].track << std::endl;
+			Songs[currentSongIndex - 1].band << " - " << Songs[currentSongIndex - 1].track << std::endl;
 	}
 
 	if (currentSongIndex < amountOfSongs - 1) {
 		std::cout << "Next song: " <<
-			Songs[currentSongIndex + 1].group << " - " << Songs[currentSongIndex + 1].track << std::endl;
+			Songs[currentSongIndex + 1].band << " - " << Songs[currentSongIndex + 1].track << std::endl;
 	}
 }
 
@@ -249,58 +244,58 @@ void printNewPlaylistOrder(int amountOfSongs, Song Songs[]) {
 	std::cout << "New playlist order " << std::endl;
 
 	for (int i = 0; i < amountOfSongs; ++i) {
-		std::cout << Songs[i].group << " - " << Songs[i].track << std::endl;
+		std::cout << Songs[i].band << " - " << Songs[i].track << std::endl;
 	}
 }
 		// процедура для сортировки структур данных, часто повторяющийся код в Case3, 4, 11 и Case10, 12
-void sortingSongs(int currentSongIndex, int amountOfSongs, Song Songs[], Popular TopSongs[]) {
+void sortingSongs(int currentSongIndex, int amountOfSongs, Song Songs[], Song TopSongs[]) {
 	if (needToCompareTwoStrings) {	// условие для Case3, 4, 11
 		for (int i = 1; i < amountOfSongs; ++i) {
 			const std::string temporaryTrackName = Songs[i].track;
-			const std::string temporaryGropuName = Songs[i].group;
+			const std::string temporaryGropuName = Songs[i].band;
 			int temporaryPopularityVariable = Songs[i].popularity;
 
 			int j = i - 1;			// если j > -1 и две строки не равны, то выполнить тело цикла
-			while (j > -1 && std::strcmp(temporaryGropuName.c_str(), Songs[j].group.c_str()) != 0) {
+			while (j > -1 && std::strcmp(temporaryGropuName.c_str(), Songs[j].band.c_str()) != 0) {
 				Songs[j + 1].track = Songs[j].track;
-				Songs[j + 1].group = Songs[j].group;
+				Songs[j + 1].band = Songs[j].band;
 				Songs[j + 1].popularity = Songs[j].popularity;
 				--j;
 
 				Songs[j + 1].track = temporaryTrackName;
-				Songs[j + 1].group = temporaryGropuName;
+				Songs[j + 1].band = temporaryGropuName;
 				Songs[j + 1].popularity = temporaryPopularityVariable;
+			}
 		}
 	}
 	if (needToComparePopularity) {	// условие для Case10, 12
 		for (int i = 1; i < amountOfSongs; ++i) {
-			const std::string tempSongName = TopSongs[i].topSongs;
-			const std::string tempBandName = TopSongs[i].topGroups;
-			int tempPopularity = TopSongs[i].popularityIndex;
+			const std::string tempSongName = TopSongs[i].track;
+			const std::string tempBandName = TopSongs[i].band;
+			int tempPopularity = TopSongs[i].popularity;
 
 			int j = i - 1;
-			while (j > -1 && TopSongs[j].popularityIndex < tempPopularity) {
-				TopSongs[j + 1].topSongs = TopSongs[j].topSongs;
-				TopSongs[j + 1].topGroups = TopSongs[j].topGroups;
-				TopSongs[j + 1].popularityIndex = TopSongs[j].popularityIndex;
+			while (j > -1 && TopSongs[j].popularity < tempPopularity) {
+				TopSongs[j + 1].track = TopSongs[j].track;
+				TopSongs[j + 1].band = TopSongs[j].band;
+				TopSongs[j + 1].popularity = TopSongs[j].popularity;
 					--j;
 				}
 
-				TopSongs[j + 1].topSongs = tempSongName;
-				TopSongs[j + 1].topGroups = tempBandName;
-				TopSongs[j + 1].popularityIndex = tempPopularity;
+				TopSongs[j + 1].track = tempSongName;
+				TopSongs[j + 1].band = tempBandName;
+				TopSongs[j + 1].popularity = tempPopularity;
 				}
 			}
-	}
 	needToCompareTwoStrings = false; needToComparePopularity = false;
 }
 
 void changeSongNumber(int currentSongIndex, int amountOfSongs, Song Songs[]) { // изменяет старый номер трека на новый 
 	std::string temporaryTrackString = Songs[currentSongIndex].track;
-	std::string temporaryGroupString = Songs[currentSongIndex].group;
+	std::string temporaryBandString = Songs[currentSongIndex].band;
 
 	for (int i = 0; i < amountOfSongs; ++i) {
-		if (std::strcmp(temporaryGroupString.c_str(), Songs[i].group.c_str()) == 0
+		if (std::strcmp(temporaryBandString.c_str(), Songs[i].band.c_str()) == 0
 			&& std::strcmp(temporaryTrackString.c_str(), Songs[i].track.c_str()) == 0) {
 			currentSongIndex = i;
 			break;
@@ -316,8 +311,8 @@ void searchingSong(int amountOfSongs, std::string stringForOutputtingBandOrSong,
 	bool found = false;
 	if (findBandName) {	// в данном случае для поиска названия группы
 		for (int i = 0; i < amountOfSongs; ++i) {
-			if (std::strcmp(bandOrSongName.c_str(), Songs[i].group.c_str()) == 0) {
-				std::cout << i + 1 << ") " << Songs[i].group << " - " << Songs[i].track << std::endl;
+			if (std::strcmp(bandOrSongName.c_str(), Songs[i].band.c_str()) == 0) {
+				std::cout << i + 1 << ") " << Songs[i].band << " - " << Songs[i].track << std::endl;
 				found = true;
 			}
 		}
@@ -325,7 +320,7 @@ void searchingSong(int amountOfSongs, std::string stringForOutputtingBandOrSong,
 	if (findSongName) {	// для поиска названия песни
 		for (int i = 0; i < amountOfSongs; ++i) {
 			if (std::strcmp(bandOrSongName.c_str(), Songs[i].track.c_str()) == 0) {
-				std::cout << i + 1 << ") " << Songs[i].group << " - " << Songs[i].track << std::endl;
+				std::cout << i + 1 << ") " << Songs[i].band << " - " << Songs[i].track << std::endl;
 				found = true;
 			}
 		}
@@ -341,10 +336,10 @@ void searchingSong(int amountOfSongs, std::string stringForOutputtingBandOrSong,
 	findBandName = false; findSongName = false; 
 }
 
-void updateTopList(int amountOfSongs, Song Songs[], Popular TopSongs[]) { // обновление элементов структуры topList, используемое в Case10 и 12
+void updateTopList(int amountOfSongs, Song Songs[], Song TopSongs[]) { // обновление элементов структуры topList, используемое в Case10 и 12
 	for (int i = 0; i < amountOfSongs; ++i) {
-		TopSongs[i].topSongs = Songs[i].track;
-		TopSongs[i].topGroups = Songs[i].group;
-		TopSongs[i].popularityIndex = Songs[i].popularity;
+		TopSongs[i].track = Songs[i].track;
+		TopSongs[i].band = Songs[i].band;
+		TopSongs[i].popularity = Songs[i].popularity;
 	}
 }
