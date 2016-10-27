@@ -5,12 +5,9 @@
 // Переменные
 const int Number_of_songs_all = 20;
 int Popular_songs_in_the_top[Number_of_songs_all];
-int Popular_songs[Number_of_songs_all];
 int Actual_number_of_songs = 0;
 int Number_of_the_current_song = 0;
 int Selection = -1;
-std::string An_array_of_songs[Number_of_songs_all];
-std::string An_array_of_groups[Number_of_songs_all];
 std::string The_songs_in_the_top[Number_of_songs_all];
 std::string The_groups_in_the_top[Number_of_songs_all];
 
@@ -118,7 +115,7 @@ int main()
 		std::cin >> Selection;
 
 		std::cin.ignore();
-	}
+	
 
 	switch (Selection)
 	{
@@ -482,6 +479,6 @@ int main()
 	default:
 		std::cout << "Unknown command." << std::endl;
 	}
-
+	}
 	std::cout << "Goodbye!" << std::endl;
 }
