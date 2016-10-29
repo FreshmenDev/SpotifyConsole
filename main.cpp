@@ -303,15 +303,15 @@ int main ()
 
                 cout<<"Enter song position, you want to play: "<<endl;
 
-                int songNomer;
+                int songNumber;
 
-                cin>>songNomer;
+                cin>>songNumber;
                 cin.ignore();
-                --songNomer;
+                --songNumber;
 
-                if (songNomer > -1 && songNomer<realCoutSongs) 
+                if (songNumber > -1 && songNumber<realCoutSongs) 
 				  {
-                    numberOfTheCurrentSong = songNomer;
+                    numberOfTheCurrentSong = songNumber;
                     ++songs[numberOfTheCurrentSong].popularity;
                   }
 
