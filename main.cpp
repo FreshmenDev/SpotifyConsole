@@ -346,7 +346,7 @@ int main()
 			{
 				songs_in_top[i] = array[i].song;
 				groups_in_top[i] = array[i].group;
-				popular_songs_in_top[i] = array[i].popularity;
+ю				popular_songs_in_top[i] = array[i].popularity;
 			}
 
 			for (int i = 1; i< actual_number_songs; ++i)
@@ -396,7 +396,7 @@ int main()
 				{
 					array[j + 1].song = array[j].song;
 					array[j + 1].group = array[j].group;
-					array[j + 1] = array[j];
+					array[j + 1].popularity = array[j].popularity;
 					--j;
 				}
 
