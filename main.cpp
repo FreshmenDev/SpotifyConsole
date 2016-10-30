@@ -1,13 +1,12 @@
-#include <iostream>
-#include <string>
-#include <cstring>
 #include "Functions.h"
+#include "SongStruct.h"
 
 int bandIndex, songIndex;
 std::string stringBand, stringSong;
 
 
 int main () {
+	Song allSongs[AMOUNT_OF_SONGS];
 	Song topList[AMOUNT_OF_SONGS];
     int amountOfAllSongs = 0;
 	int numberOfTheCurrentSong = 0;
