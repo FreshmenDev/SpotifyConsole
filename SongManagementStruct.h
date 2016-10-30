@@ -8,5 +8,4 @@ struct SongManagement
     int popularity;
 };
 
-//extern SongManagement glovalStruct;
 #endif
